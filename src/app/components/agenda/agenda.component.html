@@ -1,0 +1,8 @@
+<h1>Agenda ...</h1>
+
+<div class="agenda-container">
+    <ng-container *ngFor="let element of list;let i=index">
+        <app-agenda-card [a]="element" class="agenda-card"/>
+    </ng-container>
+</div>
+

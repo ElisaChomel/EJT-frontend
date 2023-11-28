@@ -1,0 +1,84 @@
+@import "./../../../../styles.scss";
+
+.admin-users-container{
+    height: 100%;
+}
+  
+.table-container {
+    height: calc(100% - 20px);
+    margin-top: 20px;
+    overflow: auto;
+}
+    
+table {
+    width: 100%;
+    max-height: 100%;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+.element-row th {
+    border-bottom-width: 0;
+    cursor: pointer;
+    color: $primary-darker-color;
+}
+
+.element-row td {
+    border-bottom-width: 0;
+}
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .element-detail-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;        
+        
+        p {
+            color: $primary-color;
+        }
+    }
+}
+
+.admin-icon mat-icon{
+    color: green!important;
+}
+
+.admin-icon:hover mat-icon {    
+    color: $second-color!important;
+}
+
+.no-admin-icon mat-icon{
+    color:$primary-darker-color;
+}
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .element-detail-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;        
+        
+        p {
+            color: $primary-color;
+        }
+    }
+}
+
+.collapsed{
+    height: 0px!important;
+    min-height: 0px!important;
+    display: 'none';
+}

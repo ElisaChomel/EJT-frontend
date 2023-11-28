@@ -1,0 +1,59 @@
+<h1>Documents ...</h1>
+
+<div class="documents-container">
+    <div class="documents-list">
+        <div>
+            <a [ngClass]="{'selected': url===urlLivretAccueil}" (click)="url=urlLivretAccueil">
+                <mat-icon aria-label="LivretAccueil" fontIcon="picture_as_pdf"></mat-icon>
+                Livret d'accueil
+            </a>
+            <a class="a-download" [download]="nameLivretAccueil" [href]="urlLivretAccueil">
+                <mat-icon aria-label="Download" fontIcon="download_for_offline"></mat-icon> 
+            </a>
+        </div>
+
+        <div>
+            <a [ngClass]="{'selected': url===urlDossierInscription}" (click)="url=urlDossierInscription">
+                <mat-icon aria-label="DossierInscription" fontIcon="picture_as_pdf"></mat-icon>
+                Dossier d'inscription
+            </a>
+            <a class="a-download" [download]="nameDossierInscription" [href]="urlDossierInscription">
+                <mat-icon aria-label="Download" fontIcon="download_for_offline"></mat-icon> 
+            </a>
+        </div>
+        
+        <div>
+            <a [ngClass]="{'selected': url===urlReglementInterieur}" (click)="url=urlReglementInterieur">
+                <mat-icon aria-label="ReglementInterieur" fontIcon="picture_as_pdf"></mat-icon>
+                Réglement Intérieur
+            </a>
+            <a class="a-download" [download]="nameReglementInterieur" [href]="urlReglementInterieur">
+                <mat-icon aria-label="Download" fontIcon="download_for_offline"></mat-icon> 
+            </a>
+        </div>
+        
+        <div>
+            <a [ngClass]="{'selected': url===urlPlanningCours}" (click)="url=urlPlanningCours">
+                <mat-icon aria-label="PlanningCours" fontIcon="picture_as_pdf"></mat-icon>
+                Planning des cours
+            </a>
+            <a class="a-download" [download]="namePlanningCours" [href]="urlPlanningCours">
+                <mat-icon aria-label="Download" fontIcon="download_for_offline"></mat-icon> 
+            </a>
+        </div>
+    </div>
+    <pdf-viewer *ngIf="url !== undefined" class="document-display"
+      [src]="url"
+      [rotation]="0"
+      [original-size]="false"
+      [show-all]="true"
+      [fit-to-page]="false"
+      [zoom]="0.9"
+      [zoom-scale]="'page-width'"
+      [stick-to-page]="false"
+      [render-text]="true"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="false"></pdf-viewer>
+
+</div>

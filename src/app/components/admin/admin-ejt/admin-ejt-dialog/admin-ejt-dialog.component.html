@@ -1,0 +1,49 @@
+<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter une FICHE</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de la FICHE</h1>
+
+<form class="ejt-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content> 
+        <div class="left">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+            </mat-form-field>            
+
+            <mat-form-field>
+                <mat-label>Type</mat-label> 
+                <mat-select formControlName="type" (selectionChange)="onTypeChange($event)">
+                    <mat-option [value]="1">Membres du bureau</mat-option>
+                    <mat-option [value]="2">Professeurs</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="data.person.type === 1">
+                <mat-label>Role</mat-label>       
+                <input matInput formControlName="role" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Détail</mat-label>       
+                <textarea  matInput formControlName="detail" required></textarea>
+            </mat-form-field>
+        </div>
+        <div class="rigth">
+            <div class="admin-ejt-photo-header">
+                <p>Ajouter ou modifier la photo.</p>
+                <div>
+                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                    <a class="button-icon" (click)="file.click()">
+                        <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+                    </a>
+                </div>
+            </div>
+            <div class="photo">
+                <img [src]="url" />
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
+    </div>
+</form>

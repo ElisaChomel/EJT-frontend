@@ -1,0 +1,66 @@
+<div class="admin-document-container">
+    <p>Gestion des documents</p>
+
+    <div class="documents-container">
+        
+        <div class="documents-list">            
+            <div>
+                <a [ngClass]="{'selected': url===urlLivretAccueil}" (click)="url=urlLivretAccueil">
+                    <mat-icon aria-label="LivretAccueil" fontIcon="picture_as_pdf"></mat-icon>
+                    Livret d'accueil
+                </a>
+                <input type="file" #file4 placeholder="Choose file" (change)="uploadFile(nameLivretAccueil, file4.files)" style="display:none;">
+                <a class="a-download" (click)="file4.click()">
+                    <mat-icon aria-label="Download" fontIcon="upload_file"></mat-icon> 
+                </a>
+            </div>
+
+            <div>
+                <a [ngClass]="{'selected': url===urlDossierInscription}" (click)="url=urlDossierInscription">
+                    <mat-icon aria-label="DossierInscription" fontIcon="picture_as_pdf"></mat-icon>
+                    Dossier d'inscription
+                </a>
+                <input type="file" #file1 placeholder="Choose file" (change)="uploadFile(nameDossierInscription, file1.files)" style="display:none;">
+                <a class="a-download" (click)="file1.click()">
+                    <mat-icon aria-label="Download" fontIcon="upload_file"></mat-icon> 
+                </a>
+            </div>
+            
+            <div>
+                <a [ngClass]="{'selected': url===urlReglementInterieur}" (click)="url=urlReglementInterieur">
+                    <mat-icon aria-label="ReglementInterieur" fontIcon="picture_as_pdf"></mat-icon>
+                    Réglement Intérieur
+                </a>
+                <input type="file" #file2 placeholder="Choose file" (change)="uploadFile(nameReglementInterieur, file2.files)" style="display:none;">
+                <a class="a-download" (click)="file2.click()">
+                    <mat-icon aria-label="Download" fontIcon="upload_file"></mat-icon> 
+                </a>
+            </div>
+            
+            <div>
+                <a [ngClass]="{'selected': url===urlPlanningCours}" (click)="url=urlPlanningCours">
+                    <mat-icon aria-label="PlanningCours" fontIcon="picture_as_pdf"></mat-icon>
+                    Planning des cours
+                </a>
+                <input type="file" #file3 placeholder="Choose file" (change)="uploadFile(namePlanningCours, file3.files)" style="display:none;">
+                <a class="a-download" (click)="file3.click()">
+                    <mat-icon aria-label="Download" fontIcon="upload_file"></mat-icon> 
+                </a>
+            </div>
+        </div>
+        <pdf-viewer *ngIf="url !== undefined" class="document-display"
+          [src]="url"
+          [rotation]="0"
+          [original-size]="false"
+          [show-all]="true"
+          [fit-to-page]="false"
+          [zoom]="0.9"
+          [zoom-scale]="'page-width'"
+          [stick-to-page]="false"
+          [render-text]="true"
+          [external-link-target]="'blank'"
+          [autoresize]="true"
+          [show-borders]="false"></pdf-viewer>
+    
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<h1>Inscription ...</h1>
+
+<div class="competitions-container">
+
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="competitions.length !== 0 && adherents.length !== 0">
+    <mat-form-field class="field-competitions">
+        <mat-label>Liste des compétitions</mat-label>
+        <mat-select formControlName="competition" >
+          <mat-option *ngFor="let c of competitions" [value]="c.id">{{c.name}} (année de naissance authorisée : {{c.yearBirthdayMax}} - {{c.yearBirthdayMin}})</mat-option>
+        </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="field-adherent">
+        <mat-label>Adhérent</mat-label>
+        <mat-select formControlName="adherent">
+          <mat-option *ngFor="let a of adherents" [value]="a.id">{{a.lastname}} {{a.firstname}} (date de naissance : {{a.birthday | date:"dd.MM.yyyy"}})</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="error">            
+      <p *ngIf="displayErrorAlreadyRegistered()">L'adhérent est déjà inscrit à cette compétition.</p>
+      <p *ngIf="displayErrorBirthday()">L'adhérent n'a pas l'age requit.</p>
+    </div>
+
+    <button mat-raised-button [disabled]="form.invalid || displayErrorAlreadyRegistered() || displayErrorBirthday()" color="primary">Inscription</button>
+  </form>  
+</div>

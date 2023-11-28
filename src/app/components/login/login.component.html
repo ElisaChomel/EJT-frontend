@@ -1,0 +1,29 @@
+<div class="login-container">
+    <h1>MON COMPTE</h1>
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-icon class="key-icon" fontIcon="key"></mat-icon>
+
+        <div class="login-form-control">
+            <mat-form-field>
+                <mat-label>Identifiant</mat-label>
+                <mat-icon matPrefix>account_circle</mat-icon>
+                <input matInput formControlName="username" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Mot de passe</mat-label>            
+                <mat-icon matSuffix>lock</mat-icon>
+                <input matInput formControlName="password" required type="password">
+            </mat-form-field>
+
+            <div class="error">            
+                <p *ngIf="displayError">Echec de l'authentification</p>
+            </div>
+
+            <button mat-raised-button color="primary" [disabled]="form.invalid">Connexion</button>
+        
+            <a routerLink="/createaccount">Je n'ai pas de compte</a>
+            <a routerLink="/resetpassword">J'ai oublié mon mot de passe</a>
+        </div>
+    </form>
+</div>

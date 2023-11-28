@@ -1,0 +1,34 @@
+<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter une DATE</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de la DATE</h1>
+
+<form class="agenda-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="date" required type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Titre</mat-label>       
+            <input matInput formControlName="title" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Resumé</mat-label>       
+            <textarea  matInput formControlName="resume" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Détail</mat-label>       
+            <textarea  matInput formControlName="detail" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Adresse</mat-label>       
+            <textarea  matInput formControlName="address" required></textarea>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
+    </div>
+</form>    

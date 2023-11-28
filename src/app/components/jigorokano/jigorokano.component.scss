@@ -1,0 +1,29 @@
+.jk-container{
+    display: flex;
+    height: calc(100% - 100px);
+
+    .jk-text{        
+        overflow: auto;
+        padding-right: 40px;
+        width: 60%;
+
+        div{
+            margin: 30px;
+        }
+
+        p{
+            text-align: justify;
+        }
+    }
+    .jk-image{
+        display: flex;
+        align-items: center;        
+        justify-content: center;
+        width: 40%;
+
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import "./../../../../styles.scss";
+
+.create-account-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 40px);    
+
+    h1{
+        margin-bottom: 40px;
+    }
+
+    .create-account-form{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items: center;
+        width: 90%;          
+        padding: 20px;    
+        background-color: $primary-lighter-color;    
+        border-radius: 10px;   
+        padding: 20px; 
+
+        .account-icon{
+            font-size: 200px;
+            width: 200px;
+            height: 200px;
+            color: $primary-color;
+        }
+
+        .create-account-form-control {
+            display: flex;
+            flex-direction: column;
+            width: 80%;  
+
+            .create-account-form-control-all-section{
+                display: flex;
+                justify-content: space-between;
+
+                .create-account-form-control-section{
+                    margin: 20px;
+                    width: 50%;
+                    
+                    mat-form-field{
+                        width: 100%;
+                    }  
+                }
+            }
+
+            .create-account-form-control-licences-section{                
+                width: calc(100%);
+
+                mat-form-field{
+
+                    margin: 20px;
+                    width: calc(50% - 40px);
+                } 
+            }
+
+            .error{
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                p {
+                    color: red;
+                }
+            } 
+        }
+        
+    }
+}

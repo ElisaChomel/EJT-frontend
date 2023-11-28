@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Ajouter un ADHERENT</h1>
+
+<form class="adherent-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Licences</mat-label>
+            <input matInput formControlName="licences" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code" required>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
+    </div>
+</form>    

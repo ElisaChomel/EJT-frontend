@@ -1,0 +1,67 @@
+@import "./../../../../styles.scss";
+
+.container{
+    border-radius: 10px;
+    width: 300px;
+    background-color: $primary-color;
+    border: 2px solid $primary-color;
+    padding-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    .action{
+        display: flex;
+        justify-content: end; 
+        
+        .mat-icon{
+            padding-right: 20px;
+            color: $primary-text-color;
+            cursor: pointer;
+        }
+
+        .mat-icon:hover{
+            color: $primary-lighter-color;
+        }
+    }
+
+    .photo 
+    {   
+        display: flex;
+        align-items: center;
+        height: 200px;
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 50px;
+        padding-left: 50px;
+        img{
+            object-fit:cover;
+            min-width: 100%;
+            min-height: 100%;
+            border-radius: 100px;
+            border: 2px solid $primary-color
+        }
+    }
+    .info{        
+        background-color: $primary-color;
+        min-height: 100px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $primary-text-color;
+        padding-top: 10px;
+        span{
+            margin-top: 20px;
+            color: $second-color;
+            font-weight: bold;
+        }
+        div{            
+            margin-top: 20px;
+            border-top: 2px solid $second-color;
+            padding-top: 20px;
+        }
+    }
+}

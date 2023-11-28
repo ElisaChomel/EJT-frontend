@@ -1,0 +1,261 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary-color: #4472c4;
+$primary-lighter-color: #b6bae0;
+$primary-darker-color: #060e79;
+
+$second-color: #FFFF00;
+$second-lighter-color: #fbfec2;
+$second-darker-color: #edf922;
+
+$warning-color: red;
+$warning-lighter-color: #ffb3b3;
+$warning-darker-color: #ff0000;
+
+$primary-text-color: #FFFFFF;
+$primary-text-dark-color: #000000;
+
+$bakcground-color:#D7DBDD;
+$bakcground-color-2: #FFFFFF;
+
+$menu-heigth: 40px;
+$header-heigth: 60px;
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+/* Couleur primaire*/
+$mat-primary: (
+  main: $primary-color,
+  lighter: $primary-lighter-color,
+  darker: $primary-darker-color,
+  200: $primary-color, // For slide toggle,
+  contrast : (
+    main: $primary-text-color,
+    lighter: $primary-text-dark-color,
+    darker: $primary-text-color,
+  )
+);
+
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+
+/* Couleur secondaire */
+
+$mat-accent: (
+  main: $second-color,
+  lighter: $second-lighter-color,
+  darker: $second-darker-color,
+  200: $second-color, // For slide toggle,
+  contrast : (
+    main: $primary-text-color,
+    lighter: $primary-text-dark-color,
+    darker: $primary-text-color,
+  )
+);
+
+$theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
+
+/* Couleur errror */
+$mat-warn: (
+  main: $warning-color,
+  lighter: $warning-lighter-color,
+  darker: $warning-darker-color,
+  200: $warning-color, // For slide toggle,
+  contrast : (
+    main: $primary-text-color,
+    lighter: $primary-text-dark-color,
+    darker: $primary-text-color,
+  )
+);
+$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $theme-primary,
+      accent: $theme-accent,
+      warn: $theme-warn,
+    ),
+    typography: mat.define-typography-config($font-family: 'Cursive'),
+    density: 0,
+  )
+);
+
+@include mat.core-theme($light-theme);
+@include mat.form-field-theme($light-theme); 
+@include mat.input-theme($light-theme);
+@include mat.button-theme($light-theme);
+@include mat.card-theme($light-theme);
+@include mat.table-theme($light-theme);
+@include mat.tabs-theme($light-theme);
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+#toast-container > div {
+  opacity:1;
+}
+
+html, body{
+    overflow: hidden!important;
+    margin: 0px;
+    padding:0;
+    height:100%;
+    border:none;
+}
+
+/* CSS DE BASE */
+:host {
+    font-family: cursive;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  h1{
+    font-size: 24px;
+  }
+
+  h2{
+    font-size: 20px;
+    padding-left: 30px;
+    color: $primary-color;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-text-color;
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    mat-icon{
+      padding-right: 10px;
+    }
+    font-size: 16px;
+  }
+
+  a:hover {
+    color: $second-color;    
+    background-color: $primary-lighter-color;
+
+    .mat-icon{
+      color: $second-color; 
+    }
+  }
+
+  a.next-icon, a.prev-icon{
+    background-color: $primary-color!important;
+    color: $second-color;
+    margin: 0px;
+    display: block;
+  }
+
+  a.button-icon {
+    .mat-icon{
+      color: $primary-color!important;
+    }
+  }
+
+  .delete-button-icon{
+    position: absolute;
+    top: 10px;
+    left: 350px;
+    background-color: $bakcground-color-2;
+    border-radius: 30px;
+    .mat-icon{
+      padding: 0px;
+    }
+  }
+
+  a.button-icon:hover{
+      background-color:transparent!important;
+      .mat-icon{
+        color: $primary-lighter-color!important;
+      }
+  }
+
+  .mat-mdc-tab-header {
+    --mdc-secondary-navigation-tab-container-height: 28px!important;
+  }
+
+  .mat-mdc-tab-label-container{
+    background-color: $primary-lighter-color;
+  }
+
+  .mat-mdc-tab-group{
+      height: calc(100% - 50px);
+  }
+
+  .mat-mdc-tab-body-wrapper{
+      height: 100%;
+  }
+
+  .mat-mdc-tab-body-content {
+    overflow: hidden!important;
+  }
+
+  .mat-mdc-dialog-title{
+    border-bottom: 2px solid $primary-lighter-color;
+  }
+
+  .ng-image-slider .ng-image-slider-container .main{
+    height: 70%!important;
+  }
+
+  
+  .mat-mdc-header-row{
+    color: $primary-color;
+  }
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }

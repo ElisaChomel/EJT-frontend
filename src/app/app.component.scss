@@ -1,0 +1,168 @@
+@import "./../styles.scss";
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-heigth;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: $primary-color;
+  font-weight: 600;
+  border-bottom: 1px solid $primary-color;
+  padding-right: 5px;
+
+  .username{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .logo-container{
+    height: $header-heigth;
+      img{
+        height: calc($header-heigth - 2px);
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    
+  }
+
+  h1{
+      padding-left: 30px;
+  }
+
+  a {
+    padding: 0px;
+    margin-right: 5px;
+    //border: 1px solid $primary-color;
+    color: $primary-color;
+
+    mat-icon{
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+
+  .a-mat-icon{
+    margin: 0px;
+    padding: 0px;
+  }
+
+  a:hover {
+    //color: $second-color;    
+    //background-color: $primary-lighter-color;
+  }
+}
+
+.loader{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu{
+  position: absolute;
+  top: $header-heigth;
+  left: 0px;
+  background-color: $primary-color;
+  height: $menu-heigth;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  a {
+    width: 200px;
+  }
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  height: calc(100% - $menu-heigth - $header-heigth);
+  width: 100%;
+  margin: 0px;
+  top: calc($menu-heigth + $header-heigth);
+  left: 0px;
+  border-top: 1px solid white;
+}
+
+.infos-container{
+    background-color: $bakcground-color;
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info-container{
+      background-color: $primary-color;
+      margin: 5px;
+      padding: 5px;
+      color: $primary-text-color;
+      //border: 1px solid $primary-color;
+      //border-radius: 10px;
+
+      h1{
+        font-size: 20px;
+      }
+
+      h2{
+        font-size: 14px;
+        color: $second-color;
+        padding-left: 15px;
+      }
+
+      .info-data-container{
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        .mat-icon{
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .contact-container{
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sponsors-container{
+      height: calc(100% - 250px - 20px);
+    }
+
+    .sponsors-list{
+      height: calc(100% - 50px);
+      overflow: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      a{
+        padding: 0px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+      }
+
+      img{
+        width: 200px;
+      }
+    }
+}
+
+.route-outlet{
+  height: calc(100% - 40px);
+  width: calc(100% - 250px);
+  padding: 20px;
+  background-color: $bakcground-color;
+}
+
+

@@ -1,0 +1,11 @@
+.agenda-container{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .agenda-card{
+        width: 100%;
+    }
+}

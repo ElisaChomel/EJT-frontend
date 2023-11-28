@@ -1,0 +1,17 @@
+.admin-new-container{
+    margin-top: 10px;
+    height: calc(100% - 60px);
+}
+
+.admin-new-header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.new-container{
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+}

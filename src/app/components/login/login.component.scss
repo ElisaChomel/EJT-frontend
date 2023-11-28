@@ -1,0 +1,52 @@
+@import "./../../../styles.scss";
+
+.login-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 40px);    
+
+    h1{
+        margin-bottom: 40px;
+    }
+
+    .login-form{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items: center;
+        width: 80%;          
+        padding: 20px;    
+        background-color: $primary-lighter-color;    
+        border-radius: 10px;    
+
+        .key-icon{
+            font-size: 200px;
+            width: 200px;
+            height: 200px;
+            transform: rotate(70deg);
+            color: $primary-color;
+        }
+
+        .login-form-control {
+            display: flex;
+            flex-direction: column;   
+            width: 60%;  
+            
+            mat-form-field{
+                width: 100%;
+            }  
+
+            .error{
+                height: 40px;
+                display: flex;
+                p {
+                    color: red;
+                }
+            } 
+        }
+        
+    }
+}

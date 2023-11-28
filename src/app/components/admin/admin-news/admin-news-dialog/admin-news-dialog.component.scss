@@ -1,0 +1,84 @@
+.mat-mdc-dialog-content{
+  display: flex;
+  width: 100%;
+}
+
+.new-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 20px);
+    padding: 10px;
+
+    .left{    
+      width: 60%;
+      mat-form-field{
+          width: 100%;
+      }
+    }
+
+    .rigth{
+      width: 40%;
+
+      .admin-new-photo-header{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 30px;
+      }
+      
+      .photo-list-group{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; /* NEW */
+        height: 100%;
+        padding-left: 30px;
+        overflow: auto;
+      }
+      
+      .inner {
+          width: 200px!important;
+          height: 100px!important; 
+          border: 1px solid blue;
+          text-align: center;
+          line-height: 5rem;
+          background-color: #efefef;
+          cursor: move;
+        }
+      
+        
+      .photo-item {
+          flex: 1 0 200px; /* NEW */
+          margin: 5px; /* NEW */
+          background-color: transparent;
+          height: 100px;
+          text-align: center;
+          line-height: 100px;
+          position: relative;
+        }
+      
+        .placeholder {
+          flex: 1 0 200px; /* NEW */
+          margin: 5px; /* NEW */
+          background-color: white;
+          height: 100px;
+          text-align: center;
+          line-height: 100px;
+          border: 1px;
+        }
+      
+        .cdk-drag-animating {
+          transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+        }
+      
+        .photo{
+            width: 200px!important;
+            height: 100px!important;            
+        }
+      
+        .delete-button-icon {
+            left: 150px!important;
+        }
+    }
+}
+

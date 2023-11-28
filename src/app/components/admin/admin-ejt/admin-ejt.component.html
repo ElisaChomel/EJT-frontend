@@ -1,0 +1,15 @@
+<div class="admin-ejt-container">    
+    <div class="admin-ejt-header">
+        <p>Gestion des personnes de l'association</p>
+        <div>
+            <a class="button-icon" (click)="openDialog()">
+                <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+            </a>
+        </div>
+    </div>
+    <div class="ejt-container">
+        <ng-container *ngFor="let element of list;let i=index">
+            <app-person [p]="element"/>
+        </ng-container>
+    </div>
+</div>

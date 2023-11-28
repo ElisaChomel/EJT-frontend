@@ -1,0 +1,61 @@
+<h1>Competitions ...</h1>
+
+<div class="competitions-container">
+    <div class="competition-filter" *ngIf="competitions.length !== 0">
+        <mat-form-field class="field-years" *ngIf="years.length > 1">
+          <mat-label>Années</mat-label>
+          <mat-select (selectionChange)="onYearChange($event)">
+            <mat-option [value]="-1">Toutes les années</mat-option>
+            <mat-option *ngFor="let y of years" [value]="y">{{y}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+        <mat-form-field class="field-competitions">
+            <mat-label>Liste des compétitions</mat-label>
+            <mat-select (selectionChange)="onCompetitionsChange($event)">
+              <mat-option *ngFor="let c of competitionsFilter" [value]="c">{{c.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="competitionSelected !== undefined" class="competition-data">
+      <div class="competition-data-final" *ngIf="hasResult">
+        <h1>BRAVO</h1>
+        <div class="competition-data-name">
+          <div class="podium podium-2"><p>{{getName(2)}}</p></div>
+          <div class="podium podium-1"><p>{{getName(1)}}</p></div>
+          <div class="podium podium-3"><p>{{getName(3)}}</p></div>
+        </div>
+        <div class="competition-data-podium">
+          <div class="podium podium-2"><p>2</p></div>
+          <div class="podium podium-1"><p>1</p></div>
+          <div class="podium podium-3"><p>3</p></div>
+        </div>
+      </div>
+
+      <div class="competition-data-others" *ngIf="hasResult">
+        <h1>Résultat par position</h1>
+        <ul>
+          <li *ngFor="let r of result">
+            Position n°{{r.position}} - {{r.firstname}} {{r.name}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="competition-data-adherents" *ngIf="!hasResult">
+        <h1>Les résultats n'ont pas encore été communiqué.</h1>
+        <h2>Liste des inscrits à la compétition</h2>
+        <ul *ngIf="result.length !== 0">
+          <li *ngFor="let r of result">
+            {{r.firstname}} {{r.name}}
+          </li>
+        </ul>
+        <p *ngIf="result.length === 0">Il n'y a pas encore d'inscrit pour cette compétition</p>
+        <a>Je m'inscris</a>
+      </div>
+    </div>
+
+    <div *ngIf="competitionSelected === undefined" class="competition-data">
+      <h1>Pas de compétition sélectionnée</h1>
+    </div>
+</div>

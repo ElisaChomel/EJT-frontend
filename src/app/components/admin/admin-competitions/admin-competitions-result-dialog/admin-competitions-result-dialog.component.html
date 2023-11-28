@@ -1,0 +1,21 @@
+<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter une RESULTAT</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification du RESULTAT</h1>
+
+<form class="result-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Position</mat-label>
+            <input matInput formControlName="position" required type="number">
+        </mat-form-field>
+
+        <mat-form-field class="field-adherent">
+            <mat-label>Adhérent</mat-label>
+            <mat-select formControlName="adherent">
+              <mat-option *ngFor="let a of data.adherents" [value]="a.adherent_id">{{a.name}} {{a.firstname}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
+    </div>
+</form>    

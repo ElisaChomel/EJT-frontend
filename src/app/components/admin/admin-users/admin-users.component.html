@@ -1,0 +1,58 @@
+<div class="admin-users-container"> 
+    <section class="table-container mat-elevation-z8" tabindex="0">
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+        
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef>Nom</th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="profile">
+            <th mat-header-cell *matHeaderCellDef>Profil</th>
+            <td mat-cell *matCellDef="let element"> 
+                <span *ngIf="element.profile === 1">Admin</span>
+                <span *ngIf="element.profile === 2">Utilisateur</span>
+            </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element"> 
+              <a class='no-admin-icon' [ngClass]="{'admin-icon' : element.profile === 1}" (click)="updateProfileType(element)">
+                <mat-icon aria-label="Modifier le profile" fontIcon="shield_person"></mat-icon>            
+              </a>
+            </td>
+          </ng-container>
+
+           <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="element-detail" [ngClass]="element === expandedElement && !!expandedElement ? 'expanded' : 'collapsed'" [@detailExpand]="element === expandedElement && !!expandedElement ? 'expanded' : 'collapsed'">
+              <div class="element-detail-header">
+                <p>Liste des adhérents de l'utilisateur</p>
+                <a class="button-icon" (click)="openDialogAdherent(element.id)">
+                  <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+                </a>
+              </div>
+              <div class="element-detail-container">
+                  <ul>
+                    <li *ngFor="let adherent of adherents" ><strong>{{adherent.lastname}} {{adherent.firstname}}</strong> ({{adherent.birthday | date:"dd.MM.yyyy"}}) : {{adherent.licenceCode}}</li>
+                  </ul>
+                  <p *ngIf="adherents.length === 0">Pas d'adhérent</p>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row" (click)="onExtend(row)"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+        </table>
+      </section>
+  </div>
+  

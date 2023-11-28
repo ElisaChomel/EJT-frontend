@@ -1,0 +1,46 @@
+<h1>Qui sommes nous ...</h1>
+
+<div class="container">
+    <div class="general">
+        <div class="general-text">
+            <p>Au club de Judo Jujitsu de Montagny/Taluyer, nous formons et éduquons depuis <strong>40 ans</strong>, à travers le code moral et l'enseignement, les enfants, ados et adultes.</p> 
+            <p>Nous enregistrons entre <strong>120 et 250 membres par ans</strong>, suivant les années.</p>
+            <p>Depuis quelques années nous avons aussi ouvert des cours adaptés pour <strong>les personnes en situation de handicap</strong>.</p>
+            <p>Nous avons aussi de <strong>très bon résultat en compétition</strong> départemental, interdépartemental, régional et international.</p>
+        </div>
+        <div class="general-logo">
+            <img alt="EJT Logo" src="../assets/logo.jpg" />
+        </div>
+    </div>
+    
+    <h2>Les membres du bureau</h2>
+    <div class="membres">
+        <ng-container *ngFor="let element of members;let i=index">
+            <app-person [p]="element"/>
+        </ng-container>
+    </div>
+
+    <h2>Les professeurs</h2>
+    <div class="profs">
+        <ng-container *ngFor="let element of profs;let i=index">
+            <app-person [p]="element"/>
+        </ng-container>
+    </div>
+
+    <h2>Nos valeurs</h2>
+
+    <div class="valeurs">
+        <p>Nos valeurs sont celles du judo. Le Judo véhicule des valeurs fondamentales qui s'imbriquent les unes dans les autres pour édifier une formation morale. Le respect de ce code est la condition première, la base de la pratique du Judo.</p>
+        
+        <ul>
+            <li><strong>L'amitié</strong> « C'est le plus pur des sentiments humains »</li>
+            <li><strong>Le courage</strong> « C'est faire ce qui est juste »</li>
+            <li><strong>La sincérité</strong> « C'est s'exprimer sans déguiser sa pensée »</li>
+            <li><strong>L'honneur</strong> « C'est être fidèle à la parole donnée »</li>
+            <li><strong>La modestie</strong> « C'est parler de soi-même sans orgueil »</li>
+            <li><strong>Le respect</strong> « Sans respect aucune confiance ne peut naître »</li>
+            <li><strong>Le contrôle</strong> de soi « C'est savoir se taire lorsque monte la colère »</li>
+            <li><strong>La politesse</strong> « C'est le respect d'autrui »</li>
+        </ul>
+    </div>
+</div>

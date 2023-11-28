@@ -1,0 +1,59 @@
+@import "./../../../../styles.scss";
+
+.container{
+    background-color: $bakcground-color-2;
+    border: 2px solid $primary-color;
+    display: flex;    
+    //width: calc(100% - 50px);
+    margin-bottom: 30px;
+    margin-right: 20px;
+
+    .date{
+        background-color: $primary-color;
+        color: $primary-text-color;
+        padding: 20px;
+        font-size: 18px;
+        align-items: center;
+        display: flex;
+    }
+
+    .infos{
+        padding: 10px;
+        width: 300px;
+        flex-shrink: 0;
+
+        .resume{
+            padding: 10px;
+        }
+
+        .address{
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            color: $warning-darker-color;
+        }
+
+        .action{
+            .mat-icon{
+                padding-right: 20px;
+                color: $primary-color;
+                cursor: pointer;
+            }
+
+            .mat-icon:hover{
+                color: $primary-lighter-color;
+            }
+        }
+    }
+
+    .detail{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        p{
+            text-align: justify;
+            min-height: 20px;
+        }
+    }
+}

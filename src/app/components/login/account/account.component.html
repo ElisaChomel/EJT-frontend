@@ -1,0 +1,72 @@
+<div class="account-container">
+    <h1>MON COMPTE</h1>
+
+    <div class="account-forms">
+
+        <form class="account-form" [formGroup]="form1" (ngSubmit)="onSubmitAcountInfo()">
+            <mat-icon class="account-icon" fontIcon="account_circle"></mat-icon>
+
+            <div class="account-form-control">
+                <div class="account-form-control-section">
+                    <mat-form-field class="account-info-field">
+                        <mat-label>Nom</mat-label>
+                        <mat-icon matPrefix>account_circle</mat-icon>
+                        <input matInput formControlName="username" required>
+                    </mat-form-field>
+                    <mat-form-field class="account-info-field">
+                        <mat-label>Email</mat-label>
+                        <mat-icon matPrefix>mail</mat-icon>
+                        <input matInput formControlName="email" required>
+                    </mat-form-field>
+                </div>    
+                
+                <mat-checkbox *ngIf="!userService.isAdmin()" formControlName="delete">Supprimer mon compte</mat-checkbox>
+
+                <div class="error">            
+                    <p *ngIf="displayError">Echec de la mise à jour du compte. Merci de contacter l'association</p>
+                </div>
+
+                <button mat-raised-button [disabled]="form1.invalid" color="primary">Modifier mon compte</button>
+            </div>     
+        </form>
+
+        <form class="account-form" *ngIf="adherents.length != 0" (ngSubmit)="onSubmitLink()">
+            <mat-icon class="adherents-icon" fontIcon="supervised_user_circle"></mat-icon>
+            <div class="account-form-control">
+                <p *ngFor="let adherent of adherents"><strong>{{adherent.lastname}} {{adherent.firstname}}</strong> ({{adherent.birthday | date:"dd.MM.yyyy"}}) : {{adherent.licenceCode}}</p>                
+                <button mat-raised-button color="primary">Ajouter un Adhérents</button>
+            </div>
+        </form>
+
+        <form class="account-form" [formGroup]="form2" (ngSubmit)="onSubmitPassword()">
+            <mat-icon class="key-icon" fontIcon="key"></mat-icon>
+        
+            <div class="account-form-control">
+                <div class="account-form-control-section">
+                    <mat-form-field class="account-password-field">
+                        <mat-label>Ancien mot de passe</mat-label>            
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <input matInput formControlName="oldPassword" required type="password" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field class="account-password-field">
+                        <mat-label>Nouveau mot de passe</mat-label>            
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <input matInput formControlName="password" required type="password" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field class="account-password-field">
+                        <mat-label>Confirmer le nouveau mot de passe</mat-label>            
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <input matInput formControlName="confirmPassword" required type="password" autocomplete="off">  
+                        <mat-error *ngIf="form2.get('confirmPassword')?.hasError('notSame')">
+                            Le mot de passe ne match pas
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            
+                <button mat-raised-button [disabled]="form2.invalid" color="primary">Modifier du mot de passe</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+

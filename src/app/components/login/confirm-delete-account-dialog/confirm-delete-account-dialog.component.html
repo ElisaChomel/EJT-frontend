@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Confirmation de suppression de compte</h1>
+<div class="container">
+    <div mat-dialog-content>
+        Merci de confirmer la suppression du compte.
+        <mat-checkbox (change)="onChange($event)">Supprimer mon compte</mat-checkbox>
+    </div>
+    <div mat-dialog-action class="action-container">
+        <button mat-stroked-button color="primary" (click)="close(false)">Annuler</button>
+        <button mat-raised-button [disabled]="!confirmDelete" color="primary" (click)="close(true)">Confirmer</button>
+    </div>
+</div>

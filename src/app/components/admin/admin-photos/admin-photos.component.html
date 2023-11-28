@@ -1,0 +1,28 @@
+<div class="admin-photo-container">
+    <div class="admin-photo-header">
+        <p>Photos affichées sur la page d'accueil du site Web.</p>
+        <div>
+            <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+            <a class="button-icon" (click)="file.click()">
+                <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+            </a>
+        </div>
+    </div>
+    <div #contenedor class="photo-list-group" cdkDropListGroup>
+        <ng-container *ngFor="let element of photosElement;let i=index">
+            <div class="photo-item" cdkDropList  cdkDropListOrientation="horizontal"
+                [cdkDropListData]="{item:element,index:i}" (cdkDropListDropped)="drop($event)">
+                <div class="inner" cdkDrag>
+                    <div class="photo-custom-placeholder" *cdkDragPlaceholder></div>
+                    <div class="photo">
+                        <img class="photo" [src]="element.url"/>
+                        <a class="button-icon delete-button-icon" (click)="delete(element.name)">
+                            <mat-icon aria-label="Supprimer" fontIcon="delete"></mat-icon>            
+                        </a>
+                    </div>
+                    <img *cdkDragPreview class="photo" [src]="element.url"/>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

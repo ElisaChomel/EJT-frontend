@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="action">
+        <mat-icon *ngIf="userService.isAdmin()" aria-label="Editer" fontIcon="edit" (click)="openEditDialog(p)"/>
+    </div>
+    <div class="photo">
+        <img [src]="url" />
+    </div>
+    <div class="info">
+        <strong>{{p.name}}</strong>
+        <span *ngIf="p.type === EjtPersonType.Membre">{{p.role}}</span>
+        <div [innerText]="p.detail"></div>
+    </div>
+</div>

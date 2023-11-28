@@ -1,0 +1,119 @@
+@import "./../../../styles.scss";
+
+$podium-color-1: #B9770E;
+$podium-color-2: #935116;
+$podium-color-3: #6E2C00;
+
+.competitions-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .competition-filter{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        .field-competitions{
+            width: 50%;
+        }
+    }
+
+    .competition-data{
+        width: 100%;
+        height: calc(100% - 120px);
+        display: flex;
+
+        .competition-data-adherents{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            
+        }
+
+        .competition-data-final{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h1{
+                color:$primary-color;
+                font-size: 36px;
+            }
+            .competition-data-name{
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+
+                .podium{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
+                    margin: 5px;
+
+                    p{
+                        font-size: 24px;
+                        position: relative;
+                        text-align: center;
+                    }
+                }
+
+                .podium-2{
+                    p {
+                        top: 50px;
+                    }
+                }
+
+                .podium-3{
+                    p {
+                        top: 100px;
+                    }
+                }
+            }
+
+            .competition-data-podium{
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+
+                .podium{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100px;
+                    margin: 5px;
+
+                    p{
+                        font-size: 56px;
+                        color: $primary-text-color;
+                    }
+                }
+
+                .podium-1{
+                    height: 200px;
+                    background-color: $podium-color-1;
+                }
+                .podium-2{
+                    height: 150px;
+                    background-color: $podium-color-2;
+                }
+                .podium-3{
+                    height: 100px;
+                    background-color: $podium-color-3;
+                }
+            }
+        }
+
+        .competition-data-others{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

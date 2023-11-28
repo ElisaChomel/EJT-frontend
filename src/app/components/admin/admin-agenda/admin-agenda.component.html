@@ -1,0 +1,15 @@
+<div class="admin-agenda-container">    
+    <div class="admin-agenda-header">
+        <p>Gestion de l'agenda</p>
+        <div>
+            <a class="button-icon" (click)="openDialog()">
+                <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+            </a>
+        </div>
+    </div>
+    <div class="agenda-container">
+        <ng-container *ngFor="let element of list;let i=index">
+            <app-agenda-card [a]="element"/>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="home-container">
+    <h1>Bienvenue sur le site web officiel de l'association de judo de Montagny</h1>
+
+    <div *ngIf="filesName.length === imageObject.length" style="width: 50%; height: 70%; text-align:center;margin:0; padding:0;">
+        <ng-image-slider #nav 
+            [images]="imageObject"  
+            [infinite]="true"
+            [autoSlide]="1"
+            [imageSize]="{width: '100%', height: '70%'}"
+            [slideImage]="1"
+            [animationSpeed]="2">
+        </ng-image-slider>
+    </div>
+
+    <p>Ici vous pourrez retrouver tous les documents relatifs à l'accosiation, les dates importantes et bien d'autre choses.</p>
+</div>
+

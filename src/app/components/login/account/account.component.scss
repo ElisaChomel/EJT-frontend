@@ -1,0 +1,82 @@
+@import "./../../../../styles.scss";
+
+.account-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 40px);  
+
+    h1{
+        margin-bottom: 40px;
+    }
+
+    .account-forms{
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+
+        .account-form{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            align-items: center;
+            width: 95%;          
+            padding: 20px;    
+            background-color: $primary-lighter-color;    
+            border-radius: 10px;   
+            padding: 20px; 
+            margin-bottom: 40px;
+
+            .adherents-icon,
+            .account-icon{
+                font-size: 200px;
+                width: 200px;
+                height: 200px;
+                color: $primary-color;
+            }
+
+            .key-icon{
+                font-size: 200px;
+                width: 200px;
+                height: 200px;
+                transform: rotate(70deg);
+                color: $primary-color;
+            }
+
+            .account-form-control {
+                display: flex;
+                flex-direction: column;
+                width: 80%;  
+
+                p{
+                    text-align: center;
+                    padding-bottom: 10px;
+                }
+
+                .account-form-control-section{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .account-info-field{
+                        width: 45%;
+                    }  
+
+                    .account-password-field{
+                        width: 30%;
+                    }
+                }
+
+                .error{
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    p {
+                        color: red;
+                    }
+                } 
+            }
+        }
+    }
+}

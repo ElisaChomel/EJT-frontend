@@ -1,0 +1,17 @@
+<h1 mat-dialog-title><strong>{{data.new.date | date:"dd/MM/yyyy"}} : {{data.new.title}}</strong></h1>
+<div mat-dialog-content class="container">
+    <div class="resume-photo">
+        <div class="resume"><strong [innerText]="data.new.resume"></strong></div>
+        <div class="photo"><img [src]="photosElement[0].url" /></div>
+    </div>
+    <div class="detail">
+        <ng-container *ngFor="let element of detailList;let i=index">
+            <p>{{element}}</p>
+        </ng-container>
+    </div>
+    <div class="photos">
+        <ng-container *ngFor="let element of photosElement;let i=index" class="photo">
+            <img *ngIf="i !== 0" [src]="element.url" />
+        </ng-container>
+    </div>
+</div>

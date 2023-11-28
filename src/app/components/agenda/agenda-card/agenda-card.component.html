@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="date">
+        <strong>{{a.date | date:"dd.MM.yyyy"}}</strong>
+    </div>
+    <div class="infos">
+        <div class="title"><strong>{{a.title}}</strong></div>
+        <div class="resume" [innerText]="a.resume"></div>
+        <div class="address">
+            <mat-icon>location_on</mat-icon>
+            <div>{{a.address}}</div>
+        </div>
+        <div *ngIf="router.url !== '/agenda'" class="action">
+            <mat-icon aria-label="Editer" fontIcon="edit" (click)="openEditDialog(a, Type.Edit)"/>
+        </div>
+    </div>   
+    <div *ngIf="router.url === '/agenda'" class="detail">
+        <ng-container *ngFor="let element of detailList;let i=index">
+            <p>{{element}}</p>
+        </ng-container>
+    </div>
+</div>

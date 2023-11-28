@@ -1,0 +1,51 @@
+@import "./../../../styles.scss";
+
+.container{
+    height: calc(100% - 60px);
+    overflow: auto;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .general, .membres, .profs, .valeurs{
+        display: flex;
+        flex-direction: row;
+        width: calc(100% - 40px);
+        background-color: $bakcground-color-2;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .membres, .profs{
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .valeurs{
+        display: flex;
+        flex-direction: column!important;
+        text-align: justify;
+    }
+
+    .general .general-logo{
+        width: 20%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .general .general-text{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: justify;
+        padding-right: 40px;
+
+        p{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}

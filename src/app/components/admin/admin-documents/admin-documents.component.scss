@@ -1,0 +1,61 @@
+@import "./../../../../styles.scss";
+
+.admin-document-container{
+    margin-top: 30px;
+    height: calc(100%);
+}
+
+.documents-container{
+    display: flex;
+    height: 100%;
+
+    .documents-list{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+
+        div{
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                color: $primary-text-dark-color;
+                margin: 5px;
+
+                .mat-icon{
+                    font-size: 30px;
+                    height: 30px;
+                    width: 30px;
+                    color: $primary-color;
+                }
+            }
+
+            a.selected{
+                background-color: $second-lighter-color;
+            }
+
+            .a-download{                
+                margin: 0px;
+
+                .mat-icon{
+                    font-size: 24px;
+                    height: 24px;
+                    width: 24px;
+                    color: $primary-color;
+                }
+            }
+
+            .a-download:hover{
+                .mat-icon{
+                    color: $primary-lighter-color;   
+                } 
+                background-color: transparent;
+            }
+        }
+    }
+
+    .document-display{
+        width: calc(100% - 300px);
+        height: calc(100% - 44px);
+    }
+}

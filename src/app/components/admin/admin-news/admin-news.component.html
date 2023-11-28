@@ -1,0 +1,15 @@
+<div class="admin-new-container">    
+    <div class="admin-new-header">
+        <p>Gestion des news</p>
+        <div>
+            <a class="button-icon" (click)="openDialog()">
+                <mat-icon aria-label="Ajouter" fontIcon="add_circle"></mat-icon>            
+            </a>
+        </div>
+    </div>
+    <div class="new-container">
+        <ng-container *ngFor="let element of list;let i=index">
+            <app-new-card [n]="element"/>
+        </ng-container>
+    </div>
+</div>

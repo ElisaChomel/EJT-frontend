@@ -1,0 +1,29 @@
+<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter un ADHERENT</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de l'ADHERENT'</h1>
+
+<form class="adherent-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="lastname" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Prénom</mat-label>       
+            <input matInput formControlName="firstname" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Année de naissance</mat-label>
+            <input matInput formControlName="birthday" required type="date">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Licence</mat-label>       
+            <input  matInput formControlName="licenceCode" required>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
+    </div>
+</form>    
