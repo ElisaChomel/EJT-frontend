@@ -38,7 +38,7 @@ export class ConfigService {
 
   loadAppConfig(): Observable<boolean> {
     console.log(`isDevMode : ${isDevMode()}`);
-    let file = isDevMode() ? "/localdata/development.json" : "/localdata/config.json";
+    let file = isDevMode() ? "/localdata/config.development.json" : "/localdata/config.json";
 
     return this.http.get(file).pipe(
       map((response) => {
