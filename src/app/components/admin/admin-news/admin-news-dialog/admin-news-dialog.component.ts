@@ -123,9 +123,16 @@ export class AdminNewsDialogComponent {
       const index = this.filesToDelete.findIndex(x => x === filename);
       
       if(index === -1){
-        this.photoUploadSubscription = this.photoService.upload(`new${id}`, f).subscribe(x => {
-          insertCount = insertCount + 1;
-          this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
+        this.photoUploadSubscription = this.photoService.upload(`new${id}`, f).subscribe({
+          next: (x) => {
+            console.log("Success to upload file");
+            insertCount = insertCount + 1;
+            this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
+          }, 
+          error: (err) => {
+            console.log("Failed to upload file");
+            console.log(err)
+          },
         });
       } else {
         this.filesToDelete.splice(index, 1);
