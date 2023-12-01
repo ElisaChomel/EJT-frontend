@@ -153,6 +153,7 @@ export class AdminNewsDialogComponent {
   }
 
   public uploadFile = (files: FileList | null) => {
+    console.log(files);
     if(files === null){
       return;
     }
@@ -165,6 +166,8 @@ export class AdminNewsDialogComponent {
     const formData = new FormData();
     formData.append('file', fileToUpload, this.generateNamePhoto());
     this.filesToUpload.push(formData);
+
+    console.log(this.filesToUpload);
 
     this.photosElement.push({name: this.generateNamePhoto(), url: URL.createObjectURL(fileToUpload)}); 
     this.cdr.detectChanges();
