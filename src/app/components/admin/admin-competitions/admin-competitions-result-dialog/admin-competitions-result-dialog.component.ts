@@ -34,7 +34,6 @@ export class AdminCompetitionsResultDialogComponent {
     private toastr: ToastrService) {}
 
   ngOnInit() {
-    console.log(this.data);
     this.form = this.formBuilder.group({
         position : [this.data.result.position, Validators.required],
         adherent: [this.data.result.adherent_id, Validators.required]

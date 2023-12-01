@@ -115,7 +115,9 @@ export class AdminNewsDialogComponent {
     let insertCount = 0;
     let deleteCount = 0;
 
-    console.log(this.filesToUpload);
+    console.log(this.filesToUpload.length);
+    console.log(this.filesToDelete.length);
+
     const insertCountTotal = this.filesToUpload.length;
     const deleteCountTotal = this.filesToDelete.length;
 
@@ -153,7 +155,6 @@ export class AdminNewsDialogComponent {
   }
 
   public uploadFile = (files: FileList | null) => {
-    console.log(files);
     if(files === null){
       return;
     }
@@ -166,8 +167,6 @@ export class AdminNewsDialogComponent {
     const formData = new FormData();
     formData.append('file', fileToUpload, this.generateNamePhoto());
     this.filesToUpload.push(formData);
-
-    console.log(this.filesToUpload);
 
     this.photosElement.push({name: this.generateNamePhoto(), url: URL.createObjectURL(fileToUpload)}); 
     this.cdr.detectChanges();
