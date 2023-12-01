@@ -29,7 +29,7 @@ export class NewCardComponent {
     ) {}
 
   ngOnInit () {
-    this.photoSubscription = this.photoService.getPhoto(this.n.id.toString(), 'photo-1.jpg')
+    this.photoSubscription = this.photoService.getPhoto(`new-${this.n.id}`, 'photo-1.jpg')
       .subscribe(x => {
         this.url = URL.createObjectURL(x);
       });  
@@ -62,7 +62,7 @@ export class NewCardComponent {
   }
 
   public getPhoto(): void{
-    this.photoSubscription = this.photoService.getPhoto(this.n.id.toString(), 'photo-1.jpg')
+    this.photoSubscription = this.photoService.getPhoto(`new-${this.n.id}`, 'photo-1.jpg')
       .subscribe(x => {
         this.url = URL.createObjectURL(x);
       }); 
