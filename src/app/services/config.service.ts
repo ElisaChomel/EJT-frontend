@@ -1,3 +1,4 @@
+import { isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
@@ -36,7 +37,10 @@ export class ConfigService {
   }
 
   loadAppConfig(): Observable<boolean> {
-    return this.http.get("/localdata/config.json").pipe(
+    console.log(`isDevMode : ${isDevMode()}`);
+    let file = isDevMode() ? "/localdata/development.json" : "/localdata/config.json";
+
+    return this.http.get(file).pipe(
       map((response) => {
         this._createConfig(response, false);
         return true;

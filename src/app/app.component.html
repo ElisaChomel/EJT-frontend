@@ -18,7 +18,7 @@
   <a aria-label="France Judo" target="#" href="https://www.ffjudo.com/" title="France Judo">
     <img alt="France Judo" src="../assets/france-judo-icon.png"/>
   </a>
-  <a *ngIf="userService.userSubject.value !== null" [matMenuTriggerFor]="menu">
+  <a [matMenuTriggerFor]="menu">
     <img alt="Menu" src="../assets/menu-icon.png"/>
   </a>
   <a *ngIf="userService.userSubject.value === null" routerLink="/login">
@@ -29,7 +29,7 @@
   </a>
 </div>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/account">
+  <button mat-menu-item routerLink="/account" *ngIf="userService.userSubject.value !== null">
     <mat-icon aria-label="Compte" fontIcon="account_circle"></mat-icon>
     Mon compte
   </button>

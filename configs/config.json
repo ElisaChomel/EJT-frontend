@@ -1,5 +1,5 @@
 {
   "API": {
-   "apiRoot": "https://localhost:7118"
+   "apiRoot": "https://ejt-backend.azurewebsites.net"
   }
 }
