@@ -48,22 +48,28 @@ export class InscriptionComponent {
         });
 
         if(this.userService.userSubject.value !== null){
-          this.adherentsSubscription = this.userService.getAllAdherents(this.userService.userSubject.value.id).subscribe(x => {            
-            this.adherents = x;
+          this.adherentsSubscription = this.userService.getAllAdherents(this.userService.userSubject.value.id).subscribe({
+            next: (x) =>  {            
+              this.adherents = x;
 
-            if(x.length === 1){
-              this.form.controls['adherent'].setValue(x[0].id);
-              this.form.controls['adherent'].disable();
-            }
+              if(x.length === 1){
+                this.form.controls['adherent'].setValue(x[0].id);
+                this.form.controls['adherent'].disable();
+              }
 
-            this.adherents.forEach(x => {
-              this.adherentsInscipritonSubscription = this.competitionService.getCompetitionsInscription(x.id).subscribe(l => {
-                this.adherentsInscipriton.push({id: x.id, competitions: l});
-              });  
-              
+              this.adherents.forEach(x => {
+                this.adherentsInscipritonSubscription = this.competitionService.getCompetitionsInscription(x.id).subscribe(l => {
+                  this.adherentsInscipriton.push({id: x.id, competitions: l});
+                });  
+                
+                this.loaderService.hide();
+                this.cdr.detectChanges();            
+              });
+            },
+            error: () => {
               this.loaderService.hide();
-              this.cdr.detectChanges();            
-            });
+              this.cdr.detectChanges();    
+            }
           });
         } 
       });  

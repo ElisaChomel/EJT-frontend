@@ -22,10 +22,6 @@
         width: 300px;
         flex-shrink: 0;
 
-        .resume{
-            padding: 10px;
-        }
-
         .address{
             padding: 20px;
             display: flex;
@@ -49,6 +45,7 @@
     .detail{
         display: flex;
         flex-direction: column;
+        justify-content: center;
         padding: 10px;
 
         p{

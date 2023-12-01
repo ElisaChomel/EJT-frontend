@@ -23,5 +23,9 @@
     </div>
 
     <button mat-raised-button [disabled]="form.invalid || displayErrorAlreadyRegistered() || displayErrorBirthday()" color="primary">Inscription</button>
-  </form>  
+  </form> 
+  
+  <div *ngIf="adherents.length === 0" class="competition-data">
+    <h1>Pas d'adhérent - Merci de contacter le bureau</h1>
+  </div>
 </div>
