@@ -21,7 +21,8 @@ export class PersonComponent {
   public url: string;
 
   public photoSubscription: Subscription = new Subscription;
- 
+  public photoUploadSubscription: Subscription = new Subscription; 
+
   constructor(
     public dialog: MatDialog,
     private photoService: PhotosService,
@@ -35,23 +36,33 @@ export class PersonComponent {
       });  
   }  
 
+  ngOnDestroy() {
+    this.photoSubscription.unsubscribe();  
+    this.photoUploadSubscription?.unsubscribe();
+  }
+
   openEditDialog(p: IEjtPerson) {
     let dialogRef = this.dialog.open(AdminEjtDialogComponent, {
       data: {
         person: p,
         type : ActionType.Edit,
+        fileToUpload: null,
       },
       width: '80%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(!!result){
-        this.p = result;
-
-        this.photoSubscription = this.photoService.getPhoto('EJT', result.photoname)
-        .subscribe(x => {
-          this.url = URL.createObjectURL(x);
-        });
+      if(!!result){        
+        if(result.fileToUpload !== null){
+          this.photoUploadSubscription = this.photoService.upload('EJT', result.fileToUpload).subscribe(photo => {
+            this.photoSubscription = this.photoService.getPhoto('EJT', result.photoname).subscribe(x => {
+              this.url = URL.createObjectURL(x);              
+              this.p = result; 
+            });
+          });
+        } else{          
+          this.p = result; 
+        }       
       }
     });
   }

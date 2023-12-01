@@ -13,6 +13,7 @@ import { PhotosService } from 'src/app/services/photos.service';
 export interface DialogData {
   person: IEjtPerson;
   type:ActionType;
+  fileToUpload: FormData;
 }
 
 @Component({
@@ -25,7 +26,6 @@ export class AdminEjtDialogComponent {
   public Type = ActionType;
   public form!: FormGroup;
   public url: string;
-  public fileToUpload: FormData | null = null;
   
   public personCreateSubscription: Subscription = new Subscription;
   public personUpdateSubscription: Subscription = new Subscription;
@@ -81,13 +81,7 @@ export class AdminEjtDialogComponent {
       this.personCreateSubscription = this.ejtService.createPerson(this.data.person).subscribe({
         next: (x) => {        
           this.toastr.success('Succès de la création de la fiche');
-          if(this.fileToUpload !== null){
-            this.photoUploadSubscription = this.photoService.upload('EJT', this.fileToUpload).subscribe(photo => {
-              this.dialogRef.close(this.data.person);
-            });
-          } else {
-            this.dialogRef.close(this.data.person);
-          }
+          this.dialogRef.close(this.data);
         },
         error: () =>{
           this.toastr.error('Echec de la création de la fiche');
@@ -97,13 +91,7 @@ export class AdminEjtDialogComponent {
       this.personUpdateSubscription = this.ejtService.updatePerson(this.data.person).subscribe({
         next: (x) => {        
           this.toastr.success('Succès de la modification de la fiche');
-          if(this.fileToUpload !== null){
-            this.photoUploadSubscription = this.photoService.upload('EJT', this.fileToUpload).subscribe(photo => {
-              this.dialogRef.close(this.data.person);
-            });
-          } else {
-            this.dialogRef.close(this.data.person);
-          }
+          this.dialogRef.close(this.data);
         },
         error: () => {
           this.toastr.error('Echec de la modification de la fiche');
@@ -123,10 +111,10 @@ export class AdminEjtDialogComponent {
 
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    const photoname = `${this.data.person.name}.jpg`;
+    const photoname = `${this.form.controls['name'].value}.jpg`;
     formData.append('file', fileToUpload, photoname);
     this.data.person.photoname = photoname;
-    this.fileToUpload = formData;
+    this.data.fileToUpload = formData;
     this.url = URL.createObjectURL(fileToUpload);
   }
 

@@ -30,8 +30,6 @@ export class AdminNewsDialogComponent {
   public Type = ActionType;
   public form!: FormGroup;
   public photosElement: PhotoElement[] = [];
-  // public filesToUpload: FormData[] = [];
-  // public filesToDelete: string[] = [];
 
   public photosSubscription: Subscription = new Subscription;
   public photosChangeSubscription: Subscription = new Subscription;
@@ -88,7 +86,6 @@ export class AdminNewsDialogComponent {
       this.newUploadSubscription = this.newsService.upload(this.data.new).subscribe({
         next: (x) => {
           this.toastr.success('Succès de la création du nouvelle enregistrement pour les news');
-          //this.insertAndDeleteFile(x.id);
           this.dialogRef.close(this.data);
         },
         error: () => {
@@ -99,7 +96,6 @@ export class AdminNewsDialogComponent {
       this.newUpdateSubscription = this.newsService.update(this.data.new).subscribe({
         next: (x) => {
           this.toastr.success('Succès de la modification de l\'enregistrement pour les news');
-          //this.insertAndDeleteFile(x.id);
           this.dialogRef.close(this.data);
         },
         error: () => {
@@ -107,55 +103,7 @@ export class AdminNewsDialogComponent {
         }
       });
     }
-  }
-
-  // public close(insertCountTotal: number, deleteCountTotal: number, insertCount: number, deleteCount:number): void{
-  //   if(insertCountTotal === insertCount && deleteCountTotal === deleteCount){
-  //     this.dialogRef.close(this.data.new);
-  //   }
-  // }
-
-  // public insertAndDeleteFile(id: number): void{
-  //   let insertCount = 0;
-  //   let deleteCount = 0;
-
-  //   const insertCountTotal = this.filesToUpload.length;
-  //   const deleteCountTotal = this.filesToDelete.length;
-
-  //   this.filesToUpload.forEach(f => {
-  //     const filename = (f.get('file') as File).name;
-  //     const index = this.filesToDelete.findIndex(x => x === filename);
-      
-  //     if(index === -1){
-  //       this.photoUploadSubscription = this.photoService.upload(`new${id}`, f).subscribe({
-  //         next: (x) => {
-  //           console.log("Success to upload file");
-  //           insertCount = insertCount + 1;
-  //           this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
-  //         }, 
-  //         error: (err) => {
-  //           console.log("Failed to upload file");
-  //           console.log(err)
-  //         },
-  //       });
-  //     } else {
-  //       this.filesToDelete.splice(index, 1);
-  //       insertCount = insertCount + 1;
-  //       deleteCount = deleteCount + 1;
-  //       this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
-  //     }
-
-  //   });
-
-  //   this.filesToDelete.forEach(f => {
-  //     this.photoDeleteSubscription = this.photoService.delete(`new${id}`, f).subscribe(x => {        
-  //       deleteCount = deleteCount + 1;
-  //       this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
-  //     });
-  //   });
-
-  //   this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
-  // }
+  } 
 
   public drop(event: CdkDragDrop<any>) {
     this.photosElement[event.previousContainer.data.index] = event.container.data.item;
