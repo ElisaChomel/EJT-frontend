@@ -37,7 +37,7 @@ export class NewCardDialogComponent {
   }
 
   private getPhotos(): void{
-    this.photosSubscription = this.photoService.getPhotosNames(`new-${this.data.new.id}`)
+    this.photosSubscription = this.photoService.getPhotosNames(`new${this.data.new.id}`)
     .subscribe(filesName => {      
       this.photosElement = [];
 
@@ -47,7 +47,7 @@ export class NewCardDialogComponent {
 
       filesName.forEach(file => {
         this.photosElement.push({name: file, url: ''});
-        this.photoSubscription = this.photoService.getPhoto(`new-${this.data.new.id}`, file)
+        this.photoSubscription = this.photoService.getPhoto(`new${this.data.new.id}`, file)
           .subscribe(x => {
             let url = URL.createObjectURL(x);
             const index = this.photosElement.findIndex(x => x.name === file);

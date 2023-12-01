@@ -123,7 +123,7 @@ export class AdminNewsDialogComponent {
       const index = this.filesToDelete.findIndex(x => x === filename);
       
       if(index === -1){
-        this.photoUploadSubscription = this.photoService.upload(`new-${id}`, f).subscribe(x => {
+        this.photoUploadSubscription = this.photoService.upload(`new${id}`, f).subscribe(x => {
           insertCount = insertCount + 1;
           this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
         });
@@ -137,7 +137,7 @@ export class AdminNewsDialogComponent {
     });
 
     this.filesToDelete.forEach(f => {
-      this.photoDeleteSubscription = this.photoService.delete(`new-${id}`, f).subscribe(x => {        
+      this.photoDeleteSubscription = this.photoService.delete(`new${id}`, f).subscribe(x => {        
         deleteCount = deleteCount + 1;
         this.close(insertCountTotal, deleteCountTotal, insertCount, deleteCount);
       });
@@ -185,12 +185,12 @@ export class AdminNewsDialogComponent {
 
   private getPhotos(): void{
     if(!!this.data.new.id){
-      this.photosSubscription = this.photoService.getPhotosNames(`new-${this.data.new.id}`)
+      this.photosSubscription = this.photoService.getPhotosNames(`new${this.data.new.id}`)
       .subscribe(filesName => {      
         this.photosElement = [];
         filesName.forEach(file => {
           this.photosElement.push({name: file, url: ''});
-          this.photoSubscription = this.photoService.getPhoto(`new-${this.data.new.id}`, file)
+          this.photoSubscription = this.photoService.getPhoto(`new${this.data.new.id}`, file)
             .subscribe(x => {
               let url = URL.createObjectURL(x);
               const index = this.photosElement.findIndex(x => x.name === file);
