@@ -5,7 +5,7 @@ import { INew } from 'src/app/models/new';
 import { PhotosService } from 'src/app/services/photos.service';
 import { UserService } from 'src/app/services/user.service';
 import { NewCardDialogComponent } from '../new-card-dialog/new-card-dialog.component';
-import { AdminNewsDialogComponent } from '../../admin/admin-news/admin-news-dialog/admin-news-dialog.component';
+import { AdminNewsDialogComponent, DialogData } from '../../admin/admin-news/admin-news-dialog/admin-news-dialog.component';
 import { ActionType } from 'src/app/enums/action-type';
 
 @Component({
@@ -21,6 +21,8 @@ export class NewCardComponent {
   public url: string;
 
   public photoSubscription: Subscription = new Subscription;
+  public photoUploadSubscription: Subscription = new Subscription;
+  public photoDeleteSubscription: Subscription = new Subscription;
 
   constructor(
     public dialog: MatDialog,
@@ -34,6 +36,12 @@ export class NewCardComponent {
         this.url = URL.createObjectURL(x);
       });  
   }  
+
+  ngOnDestroy() {
+    this.photoSubscription.unsubscribe();  
+    this.photoUploadSubscription.unsubscribe();  
+    this.photoDeleteSubscription.unsubscribe(); 
+  }
 
   openDisplayDialog(n: INew) {
     this.dialog.open(NewCardDialogComponent, {
@@ -49,14 +57,15 @@ export class NewCardComponent {
       data: {
         new: n,
         type,
+        filesToUpload: [],
+        filesToDelete: [],
       },
       width: '80%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(!!result){
-        this.n = result;
-        this.getPhoto();
+        this.insertAndDeleteFile(result);
       }
     });
   }
@@ -66,5 +75,32 @@ export class NewCardComponent {
       .subscribe(x => {
         this.url = URL.createObjectURL(x);
       }); 
+  }
+
+  public insertAndDeleteFile(data: DialogData): void{
+    data.filesToUpload.forEach(f => {
+      const filename = (f.get('file') as File).name;
+      const index = data.filesToDelete.findIndex(x => x === filename);
+      
+      if(index === -1){
+        this.photoUploadSubscription = this.photoService.upload(`new${data.new.id}`, f).subscribe({
+          next: (x) => {
+            this.n = data.new;
+            this.getPhoto();
+          }, 
+          error: (err) => {
+            console.log("Failed to upload file");
+            console.log(err)
+          },
+        });
+      } else {
+        data.filesToDelete.splice(index, 1);        
+      }
+
+    });
+
+    data.filesToDelete.forEach(f => {
+      this.photoDeleteSubscription = this.photoService.delete(`new${data.new.id}`, f).subscribe();
+    });
   }
 }
