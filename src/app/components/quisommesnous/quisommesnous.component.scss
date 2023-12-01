@@ -1,11 +1,12 @@
 @import "./../../../styles.scss";
 
-.container{
+.quisommesnous-container{
     height: calc(100% - 60px);
     overflow: auto;
-    padding-right: 40px;
+    padding-right: 0px;
     display: flex;
     flex-direction: column;
+    width: calc(100%);
 
     .general, .membres, .profs, .valeurs{
         display: flex;

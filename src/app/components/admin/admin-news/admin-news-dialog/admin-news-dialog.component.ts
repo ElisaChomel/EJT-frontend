@@ -115,6 +115,7 @@ export class AdminNewsDialogComponent {
     let insertCount = 0;
     let deleteCount = 0;
 
+    console.log(this.filesToUpload);
     const insertCountTotal = this.filesToUpload.length;
     const deleteCountTotal = this.filesToDelete.length;
 

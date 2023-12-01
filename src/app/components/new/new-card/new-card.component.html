@@ -1,14 +1,16 @@
-<div class="container">
-    <div class="infos">
-        <div class="title"><strong>{{n.date | date:"dd/MM/yyyy"}} : {{n.title}}</strong></div>
-        <div class="resume" [innerText]="n.resume"></div>        
-        <div class="action">
-            <mat-icon aria-label="Voirplus" fontIcon="visibility" (click)="openDisplayDialog(n)"/>
-            <mat-icon *ngIf="userService.isAdmin()" aria-label="Editer" fontIcon="edit" (click)="openEditDialog(n, Type.Edit)"/>
+<div class="new-container">
+    <div class="title"><strong>{{n.date | date:"dd/MM/yyyy"}} : {{n.title}}</strong></div>
+    <div class="content">
+        <div class="infos">       
+            <div class="resume" [innerText]="n.resume"></div>        
+            <div class="action">
+                <mat-icon aria-label="Voirplus" fontIcon="visibility" (click)="openDisplayDialog(n)"/>
+                <mat-icon *ngIf="userService.isAdmin()" aria-label="Editer" fontIcon="edit" (click)="openEditDialog(n, Type.Edit)"/>
+            </div>
         </div>
+        <div class="photo">
+            <img [src]="url" />
+        </div>    
     </div>
-    <div class="photo">
-        <img [src]="url" />
-    </div>    
 </div>
 

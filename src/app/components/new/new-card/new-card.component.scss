@@ -1,11 +1,12 @@
 @import "./../../../../styles.scss";
 
-.container{
+.new-container{
     background-color: $bakcground-color-2;
     border: 2px solid $primary-color;
     border-radius: 5px;
     padding: 20px;
     display: flex;
+    flex-direction: column;
     width: 400px;
     margin: 20px;
 
@@ -14,32 +15,36 @@
         height: 40px;
     }
 
-    .resume{
-        padding-top: 20px;
-        padding-bottom: 10px;
-        display: block;
-        text-align: justify;
-        height: 32px;
+    .content{
+        display: flex;
 
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        .resume{
+            padding-top: 20px;
+            padding-bottom: 10px;
+            display: block;
+            text-align: justify;
+            height: 64px;
 
-        text-overflow: ellipsis;
-    }
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
 
-    .action{
-        padding-top: 20px;
-
-        .mat-icon{
-            padding-right: 20px;
-            color: $primary-color;
-            cursor: pointer;
+            text-overflow: ellipsis;
         }
 
-        .mat-icon:hover{
-            color: $primary-lighter-color;
+        .action{
+            padding-top: 20px;
+
+            .mat-icon{
+                padding-right: 20px;
+                color: $primary-color;
+                cursor: pointer;
+            }
+
+            .mat-icon:hover{
+                color: $primary-lighter-color;
+            }
         }
     }
 
