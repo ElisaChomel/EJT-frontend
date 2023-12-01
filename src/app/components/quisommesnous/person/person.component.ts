@@ -57,11 +57,11 @@ export class PersonComponent {
           this.photoUploadSubscription = this.photoService.upload('EJT', result.fileToUpload).subscribe(photo => {
             this.photoSubscription = this.photoService.getPhoto('EJT', result.photoname).subscribe(x => {
               this.url = URL.createObjectURL(x);              
-              this.p = result; 
+              this.p = result.person; 
             });
           });
         } else{          
-          this.p = result; 
+          this.p = result.person; 
         }       
       }
     });
