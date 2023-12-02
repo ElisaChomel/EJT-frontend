@@ -1,0 +1,35 @@
+@import "./../../../styles.scss";
+
+.info-container{
+    background-color: $primary-color;
+    margin: 5px;
+    padding: 5px;
+    color: $primary-text-color;
+    width: 100%;
+
+    h1{
+    font-size: 20px;
+    }
+
+    h2{
+    font-size: 14px;
+    color: $second-color;
+    padding-left: 15px;
+    }
+
+    .info-data-container{
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        .mat-icon{
+            padding-right: 10px;
+        }
+    }
+}
+
+.contact-container{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }

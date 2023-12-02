@@ -50,3 +50,14 @@
         
     }
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .key-icon{
+        display: none;
+    }
+
+    .login-form-control{
+        width: 100%!important;  
+    }
+}

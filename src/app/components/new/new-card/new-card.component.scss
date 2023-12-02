@@ -1,13 +1,13 @@
 @import "./../../../../styles.scss";
 
 .new-container{
-    background-color: $bakcground-color-2;
+    background-color: $background-color-2;
     border: 2px solid $primary-color;
     border-radius: 5px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
     margin: 20px;
 
     .title{
@@ -54,8 +54,7 @@
         margin-left: 20px;
         
         img{
-            width: 200px;
-            height: 100px;
+            width: 100px;
         }
     }
 }

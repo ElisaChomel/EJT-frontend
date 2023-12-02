@@ -15,8 +15,8 @@ $warning-darker-color: #ff0000;
 $primary-text-color: #FFFFFF;
 $primary-text-dark-color: #000000;
 
-$bakcground-color:#D7DBDD;
-$bakcground-color-2: #FFFFFF;
+$background-color:#D7DBDD;
+$background-color-2: #FFFFFF;
 
 $menu-heigth: 40px;
 $header-heigth: 60px;
@@ -146,6 +146,7 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: $primary-text-color;
     text-decoration: none;
     padding: 10px;
@@ -183,7 +184,7 @@ html, body{
     position: absolute;
     top: 10px;
     left: 350px;
-    background-color: $bakcground-color-2;
+    background-color: $background-color-2;
     border-radius: 30px;
     .mat-icon{
       padding: 0px;
@@ -228,34 +229,4 @@ html, body{
   
   .mat-mdc-header-row{
     color: $primary-color;
-  }
-
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
   }

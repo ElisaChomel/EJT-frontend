@@ -12,12 +12,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { SharedModule } from './shared.module';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,   
-    HomeComponent,     
+    HomeComponent, ContactusComponent,     
   ],
   imports: [
     HttpClientModule,

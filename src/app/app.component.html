@@ -3,19 +3,19 @@
   <div class="logo-container">
     <img alt="EJT Logo" src="../assets/logo.jpg" />
   </div>
-  <h1>EJT - Judo de Montagny</h1>
+  <h1>EJT<span class="toolbar-full-name"> - Judo de Montagny</span></h1>
   <div class="spacer"></div>
-  <p class="username" *ngIf="userService.userSubject.value !== null">Bienvenue {{userService.userSubject.value.username}}</p>
-  <a aria-label="Youtube" href="#" title="Youtube">
+  <p class="username toolbar-info" *ngIf="userService.userSubject.value !== null">Bienvenue {{userService.userSubject.value.username}}</p>
+  <a class="toolbar-reseaux-sociaux" aria-label="Youtube" href="#" title="Youtube">
     <img alt="Youtube" src="../assets/youtube-icon.png"/>
   </a>
-  <a aria-label="Facebook" href="#" title="Facebook">
+  <a class="toolbar-reseaux-sociaux" aria-label="Facebook" href="#" title="Facebook">
     <img alt="Facebook" src="../assets/facebook-icon.png"/>
   </a>
-  <a aria-label="Instagram" href="#" title="Instagram">
+  <a class="toolbar-reseaux-sociaux" aria-label="Instagram" href="#" title="Instagram">
     <img alt="Instagram" src="../assets/instagram-icon.png"/>
   </a>
-  <a aria-label="France Judo" target="#" href="https://www.ffjudo.com/" title="France Judo">
+  <a class="toolbar-reseaux-sociaux" aria-label="France Judo" target="#" href="https://www.ffjudo.com/" title="France Judo">
     <img alt="France Judo" src="../assets/france-judo-icon.png"/>
   </a>
   <a [matMenuTriggerFor]="menu">
@@ -29,6 +29,26 @@
   </a>
 </div>
 <mat-menu #menu="matMenu">
+  <button class="menu-full" mat-menu-item routerLink="">
+    <mat-icon aria-label="Accueil" fontIcon="home"></mat-icon>
+    Accueil
+  </button>
+  <button class="menu-full" mat-menu-item routerLink="/quisommesnous">
+    <mat-icon aria-label="QuiSommesNous" fontIcon="group"></mat-icon>
+    Qui sommes nous
+  </button>
+  <button class="menu-full" mat-menu-item routerLink="/jigorokano">
+    <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
+    Jigoro Kano
+  </button>
+  <button class="menu-full" mat-menu-item routerLink="/new">
+    <mat-icon aria-label="News" fontIcon="info"></mat-icon>
+    News
+  </button>
+  <button class="menu-full" mat-menu-item routerLink="/agenda">
+    <mat-icon aria-label="Agenda" fontIcon="view_agenda"></mat-icon>
+    Agenda
+  </button>
   <button mat-menu-item routerLink="/profile/account" *ngIf="userService.userSubject.value !== null">
     <mat-icon aria-label="Compte" fontIcon="account_circle"></mat-icon>
     Mon compte
@@ -120,23 +140,7 @@
       </div>
     </div>
 
-    <div class="contact-container info-container">
-      <h1>Nous Contacter</h1>
-      <div class="info-data-container">
-        <mat-icon aria-label="Email" fontIcon="alternate_email"></mat-icon>
-        <span>judo.ejt@gmail.com</span>
-      </div>
-      <h2>Dojo de Montagny</h2>
-      <div class="info-data-container">
-        <mat-icon aria-label="Adresse dojo de Montangy" fontIcon="location_on"></mat-icon>
-        <span>774 montée de sourzy, <br/> 69700 Montagny</span>
-      </div>
-      <h2>Dojo de Taluyers</h2>
-      <div class="info-data-container">
-        <mat-icon aria-label="Adresse dojo de Taluyers" fontIcon="location_on"></mat-icon>
-        <span>160 rue de la mairie, <br/> 69440 Taluyers</span>
-      </div>
-    </div>
+    <app-contactus></app-contactus>
     
   </div>
   <div class="route-outlet">

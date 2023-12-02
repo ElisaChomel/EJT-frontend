@@ -71,3 +71,38 @@
         
     }
 }
+
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .account-icon{
+        display: none;
+    }
+
+    .create-account-form{            
+        height: 100%!important;
+
+        .create-account-form-control{
+            width: 100%!important;              
+            height: 100%!important;
+            overflow: auto!important;
+    
+            .create-account-form-control-licences-section,
+            .create-account-form-control-all-section {
+                display: flex!important;
+                flex-direction:column!important;
+
+                mat-form-field,
+                .create-account-form-control-section{
+                    margin: 5px!important;
+                    width: calc(100% - 10px)!important;
+
+                    mat-form-field{
+                        margin: 0px!important;
+                        width: 100%!important;
+                    }
+                }
+            }
+        }
+    }
+}

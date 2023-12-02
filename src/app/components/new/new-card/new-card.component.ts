@@ -48,7 +48,7 @@ export class NewCardComponent {
       data: {
         new: n
       },
-      width: '60%',
+      width: '80%',
     });
   }
 
@@ -87,10 +87,6 @@ export class NewCardComponent {
           next: (x) => {
             this.n = data.new;
             this.getPhoto();
-          }, 
-          error: (err) => {
-            console.log("Failed to upload file");
-            console.log(err)
           },
         });
       } else {

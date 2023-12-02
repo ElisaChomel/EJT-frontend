@@ -12,7 +12,7 @@
         display: flex;
         flex-direction: row;
         width: calc(100% - 40px);
-        background-color: $bakcground-color-2;
+        background-color: $background-color-2;
         padding: 20px;
         border-radius: 10px;
     }
@@ -48,5 +48,24 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .general {
+        .general-text{
+            width: 100%!important;
+            padding-right: 10px!important;
+        }
+        .general-logo{
+            width: 100%!important;
+        }
+    }
+
+    .general, .membres, .profs, .valeurs {
+        width: 100%!important;
+        flex-direction: column!important;
+        padding: 10px!important;
     }
 }

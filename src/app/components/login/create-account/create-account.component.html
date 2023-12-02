@@ -24,7 +24,7 @@
                         <input matInput formControlName="password" required type="password">
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Confirmation mot de passe</mat-label>
+                        <mat-label>Confirmation</mat-label>
                         <mat-icon matPrefix>lock</mat-icon>
                         <input matInput formControlName="confirmPassword" required type="password">  
                         <mat-error *ngIf="form.get('confirmPassword')?.hasError('notSame')">

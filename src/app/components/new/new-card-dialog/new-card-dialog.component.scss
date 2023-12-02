@@ -10,6 +10,7 @@
             display: flex;
             align-items: center;
             font-size: 20px;
+            padding-top: 10px;
         }
 
         .photo{
@@ -43,5 +44,12 @@
             width: 200px;
             height: 100px;
         }
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .resume-photo{
+        flex-direction: column;
     }
 }

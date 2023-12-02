@@ -1,7 +1,7 @@
 @import "./../../../../styles.scss";
 
 .agenda-card-container{
-    background-color: $bakcground-color-2;
+    background-color: $background-color-2;
     border: 2px solid $primary-color;
     display: flex;    
     width: calc(100% - 40px);
@@ -52,5 +52,12 @@
             text-align: justify;
             min-height: 20px;
         }
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .agenda-card-container{
+        flex-direction: column;
     }
 }

@@ -54,3 +54,19 @@
         height: calc(100% - 64px);
     }
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .documents-container{
+        flex-direction: column;
+
+        .documents-list{
+            width: 100%;
+        }
+
+        .document-display{
+            width: 100%;
+            height: 100%;            
+        }
+    }
+}
