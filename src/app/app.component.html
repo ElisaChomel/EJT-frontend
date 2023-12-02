@@ -21,7 +21,7 @@
   <a [matMenuTriggerFor]="menu">
     <img alt="Menu" src="../assets/menu-icon.png"/>
   </a>
-  <a *ngIf="userService.userSubject.value === null" routerLink="/login">
+  <a *ngIf="userService.userSubject.value === null" routerLink="/profile/login">
     <img alt="Profile" src="../assets/login-icon.png"/>
   </a>
   <a *ngIf="userService.userSubject.value !== null" (click)="logOff()">
@@ -29,7 +29,7 @@
   </a>
 </div>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/account" *ngIf="userService.userSubject.value !== null">
+  <button mat-menu-item routerLink="/profile/account" *ngIf="userService.userSubject.value !== null">
     <mat-icon aria-label="Compte" fontIcon="account_circle"></mat-icon>
     Mon compte
   </button>
@@ -51,7 +51,7 @@
     <mat-icon aria-label="Compétitions" fontIcon="emoji_events"></mat-icon>
     Compétitions - Résultat
   </button> 
-  <button mat-menu-item routerLink="/competitionsInscription">
+  <button mat-menu-item routerLink="/competitions/inscription">
     <mat-icon aria-label="Compétitions" fontIcon="edit"></mat-icon>
     Compétitions - Inscription
   </button>

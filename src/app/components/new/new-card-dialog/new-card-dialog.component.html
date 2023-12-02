@@ -2,7 +2,7 @@
 <div mat-dialog-content class="dialog-container">
     <div class="resume-photo">
         <div class="resume"><strong [innerText]="data.new.resume"></strong></div>
-        <div class="photo"><img [src]="photosElement[0].url" /></div>
+        <div class="photo" *ngIf="photosElement.length > 0"><img [src]="photosElement[0].url" /></div>
     </div>
     <div class="detail">
         <ng-container *ngFor="let element of detailList;let i=index">

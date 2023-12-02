@@ -1,34 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewComponent } from './components/new/new.component';
-import { DocumentComponent } from './components/document/document.component';
-import { QuisommesnousComponent } from './components/quisommesnous/quisommesnous.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { JigorokanoComponent } from './components/jigorokano/jigorokano.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { AuthGuard } from './helpers/auth.guard';
-import { AgendaComponent } from './components/agenda/agenda.component';
-import { CompetitionsComponent } from './components/competitions/competitions.component';
-import { CreateAccountComponent } from './components/login/create-account/create-account.component';
-import { AccountComponent } from './components/login/account/account.component';
-import { ResetPasswordComponent } from './components/login/reset-password/reset-password.component';
-import { InscriptionComponent } from './components/competitions/inscription/inscription.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'createaccount', component: CreateAccountComponent },
-  { path: 'resetpassword', component: ResetPasswordComponent },
-  { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
-  { path: 'quisommesnous', component: QuisommesnousComponent},
-  { path: 'jigorokano', component: JigorokanoComponent},
-  { path: 'new', component: NewComponent},
-  { path: 'agenda', component: AgendaComponent},
-  { path: 'document', component: DocumentComponent},
-  { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard]},
-  { path: 'competitionsInscription', component: InscriptionComponent, canActivate: [AuthGuard]},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
+  { path: 'profile', loadChildren: () => import('./components/login/login.module').then((m) => m.LoginModule) },
+  { path: 'quisommesnous', loadChildren: () => import('./components/quisommesnous/quisommesnous.module').then((m) => m.QuisommesnousModule)},
+  { path: 'jigorokano', loadChildren: () => import('./components/jigorokano/jigorokano.module').then((m) => m.JigorokanoModule)},
+  { path: 'new', loadChildren: () => import('./components/new/new.module').then((m) => m.NewModule)},
+  { path: 'agenda', loadChildren: () => import('./components/agenda/agenda.module').then((m) => m.AgendaModule)},
+  { path: 'document', loadChildren: () => import('./components/document/document.module').then((m) => m.DocumentModule)},
+  { path: 'competitions', loadChildren: () => import('./components/competitions/competitions.module').then((m) => m.ComeptitionsModule)},
+  { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule)},
 ];
 
 @NgModule({
