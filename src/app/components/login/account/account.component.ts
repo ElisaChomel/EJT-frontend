@@ -137,14 +137,16 @@ export class AccountComponent extends PasswordCheck {
       data: { userId: this.userService.userSubject.value?.id}
     });
 
-    dialogRef.afterClosed().subscribe(results => {
-      const list = [...this.adherents];
+    dialogRef.afterClosed().subscribe(results => {      
+      if(!!results){
+        const list = [...this.adherents];
 
-      (results as IEjtAdherent[]).forEach(result => {        
-        list.push(result);
-      });
+        (results as IEjtAdherent[]).forEach(result => {        
+          list.push(result);
+        });
       
-      this.adherents = [...list];
+        this.adherents = [...list];
+      }
     });
   }
 }

@@ -18,7 +18,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 @NgModule({
   declarations: [
     AppComponent,   
-    HomeComponent, ContactusComponent,     
+    HomeComponent, 
+    ContactusComponent,     
   ],
   imports: [
     HttpClientModule,

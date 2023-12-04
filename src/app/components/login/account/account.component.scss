@@ -80,3 +80,26 @@
         }
     }
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .account-icon,
+    .adherents-icon,
+    .key-icon{
+        display: none;
+    }
+
+    .account-form-control{        
+        width: 100%!important; 
+
+        .account-form-control-section{
+            flex-direction: column;
+            width: 100%!important;  
+
+            .account-info-field,
+            .account-password-field{
+                width: 100%!important;
+            }
+        }
+    }
+}

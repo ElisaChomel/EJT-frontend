@@ -8,7 +8,6 @@ import { AdminRoutingModule } from "./admin-routing.module";
 import { SharedModule } from "src/app/shared.module";
 import { AdminDocumentsComponent } from "./admin-documents/admin-documents.component";
 import { AdminPhotosComponent } from "./admin-photos/admin-photos.component";
-import { AdminAdherentLinkDialogComponent } from "./admin-adherent/admin-adherent-link-dialog/admin-adherent-link-dialog.component";
 import { AdminAdherentDialogComponent } from "./admin-adherent/admin-adherent-dialog/admin-adherent-dialog.component";
 import { AdminAdherentComponent } from "./admin-adherent/admin-adherent.component";
 import { AdminEjtDialogComponent } from "./admin-ejt/admin-ejt-dialog/admin-ejt-dialog.component";
@@ -21,13 +20,6 @@ import { AdminCompetitionsComponent } from "./admin-competitions/admin-competiti
 import { AdminCompetitionsDialogComponent } from "./admin-competitions/admin-competitions-dialog/admin-competitions-dialog.component";
 import { AdminCompetitionsResultDialogComponent } from "./admin-competitions/admin-competitions-result-dialog/admin-competitions-result-dialog.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatTableModule } from "@angular/material/table";
-import { DragDropModule } from "@angular/cdk/drag-drop";
-import { MatInputModule } from "@angular/material/input";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatSelectModule } from "@angular/material/select";
-import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -45,8 +37,7 @@ import { MatDialogModule } from "@angular/material/dialog";
         AdminEjtComponent,
         AdminEjtDialogComponent,
         AdminAdherentComponent,
-        AdminAdherentDialogComponent,
-        AdminAdherentLinkDialogComponent
+        AdminAdherentDialogComponent
     ],
     imports: [
         AdminRoutingModule,

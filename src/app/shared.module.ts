@@ -24,6 +24,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { PdfViewerModule } from "ng2-pdf-viewer";
 import { ReactiveFormsModule } from "@angular/forms";
+import { AdminAdherentLinkDialogComponent } from "./components/admin/admin-adherent/admin-adherent-link-dialog/admin-adherent-link-dialog.component";
 
 registerLocaleData(localeFr);
 
@@ -33,6 +34,7 @@ registerLocaleData(localeFr);
         NewCardComponent,
         NewCardDialogComponent,
         AgendaCardComponent,
+        AdminAdherentLinkDialogComponent,
     ],
     imports: [
         DragDropModule,
@@ -60,7 +62,8 @@ registerLocaleData(localeFr);
         PersonComponent,  
         NewCardComponent,
         NewCardDialogComponent,
-        AgendaCardComponent,        
+        AgendaCardComponent,    
+        AdminAdherentLinkDialogComponent,    
         DragDropModule,
         MatIconModule,
         MatDialogModule,

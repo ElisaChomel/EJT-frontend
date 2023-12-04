@@ -30,13 +30,13 @@
             </div>     
         </form>
 
-        <form class="account-form" *ngIf="adherents.length != 0" (ngSubmit)="onSubmitLink()">
+        <div class="account-form" *ngIf="adherents.length != 0">
             <mat-icon class="adherents-icon" fontIcon="supervised_user_circle"></mat-icon>
             <div class="account-form-control">
                 <p *ngFor="let adherent of adherents"><strong>{{adherent.lastname}} {{adherent.firstname}}</strong> ({{adherent.birthday | date:"dd.MM.yyyy"}}) : {{adherent.licenceCode}}</p>                
-                <button mat-raised-button color="primary">Ajouter un Adhérents</button>
+                <button mat-raised-button color="primary" (click)="onSubmitLink()">Ajouter un Adhérents</button>
             </div>
-        </form>
+        </div>
 
         <form class="account-form" [formGroup]="form2" (ngSubmit)="onSubmitPassword()">
             <mat-icon class="key-icon" fontIcon="key"></mat-icon>
@@ -54,7 +54,7 @@
                         <input matInput formControlName="password" required type="password" autocomplete="off">
                     </mat-form-field>
                     <mat-form-field class="account-password-field">
-                        <mat-label>Confirmer le nouveau mot de passe</mat-label>            
+                        <mat-label>Confirmer</mat-label>            
                         <mat-icon matSuffix>lock</mat-icon>
                         <input matInput formControlName="confirmPassword" required type="password" autocomplete="off">  
                         <mat-error *ngIf="form2.get('confirmPassword')?.hasError('notSame')">

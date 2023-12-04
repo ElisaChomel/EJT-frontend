@@ -6,6 +6,7 @@ import { AccountComponent } from "./account/account.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 import { SharedModule } from "src/app/shared.module";
 import { ConfirmDeleteAccountDialogComponent } from "./confirm-delete-account-dialog/confirm-delete-account-dialog.component";
+
 @NgModule({
     declarations: [         
         LoginComponent, 
