@@ -29,7 +29,7 @@ $mat-primary: (
   main: $primary-color,
   lighter: $primary-lighter-color,
   darker: $primary-darker-color,
-  200: $primary-color, // For slide toggle,
+  200: $primary-color,
   contrast : (
     main: $primary-text-color,
     lighter: $primary-text-dark-color,
@@ -45,7 +45,7 @@ $mat-accent: (
   main: $second-color,
   lighter: $second-lighter-color,
   darker: $second-darker-color,
-  200: $second-color, // For slide toggle,
+  200: $second-color,
   contrast : (
     main: $primary-text-color,
     lighter: $primary-text-dark-color,
@@ -60,7 +60,7 @@ $mat-warn: (
   main: $warning-color,
   lighter: $warning-lighter-color,
   darker: $warning-darker-color,
-  200: $warning-color, // For slide toggle,
+  200: $warning-color,
   contrast : (
     main: $primary-text-color,
     lighter: $primary-text-dark-color,
