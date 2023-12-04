@@ -76,7 +76,7 @@ $light-theme: mat.define-light-theme(
       accent: $theme-accent,
       warn: $theme-warn,
     ),
-    typography: mat.define-typography-config($font-family: 'Cursive'),
+    typography: mat.define-typography-config($font-family: "'Roboto', sans-serif"),
     density: 0,
   )
 );
@@ -105,7 +105,7 @@ html, body{
 
 /* CSS DE BASE */
 :host {
-    font-family: cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
