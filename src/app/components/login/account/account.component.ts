@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 import { PasswordCheck, PasswordCheckErrorStateMatcher } from '../password-check';
 import { IEjtAdherent } from 'src/app/models/ejt-adherent';
 import { AdminAdherentLinkDialogComponent } from '../../admin/admin-adherent/admin-adherent-link-dialog/admin-adherent-link-dialog.component';
+import { AdminAdherentDialogComponent } from '../../admin/admin-adherent/admin-adherent-dialog/admin-adherent-dialog.component';
+import { ActionType } from 'src/app/enums/action-type';
+import { BeltType } from 'src/app/enums/belt-type';
 
 @Component({
   selector: 'app-account',
@@ -22,6 +25,7 @@ export class AccountComponent extends PasswordCheck {
   public displayError: boolean = false;
   matcher = new PasswordCheckErrorStateMatcher();
   public adherents: IEjtAdherent[] = [];
+  public BeltType = BeltType;
 
   public updateSubscription: Subscription = new Subscription;
   public updatePasswordSubscription: Subscription = new Subscription;  
@@ -130,6 +134,14 @@ export class AccountComponent extends PasswordCheck {
         }
       });
     }
+  }
+
+  onSubmitEdit(adherent: IEjtAdherent): void{
+    console.log("Edit Adherent");
+    let dialogRef = this.dialog.open(AdminAdherentDialogComponent, {
+      data: { adherent, type : ActionType.Edit},
+      width: '500px',
+    });
   }
 
   onSubmitLink(): void{

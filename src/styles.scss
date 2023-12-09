@@ -230,3 +230,9 @@ html, body{
   .mat-mdc-header-row{
     color: $primary-color;
   }
+
+ .mat-mdc-menu-trigger{
+    height: 20px;
+    margin: 0px;
+    padding: 20px!important;
+ } 

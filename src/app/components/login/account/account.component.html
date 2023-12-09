@@ -33,7 +33,32 @@
         <div class="account-form" *ngIf="adherents.length != 0">
             <mat-icon class="adherents-icon" fontIcon="supervised_user_circle"></mat-icon>
             <div class="account-form-control">
-                <p *ngFor="let adherent of adherents"><strong>{{adherent.lastname}} {{adherent.firstname}}</strong> ({{adherent.birthday | date:"dd.MM.yyyy"}}) : {{adherent.licenceCode}}</p>                
+                <p *ngFor="let adherent of adherents" (click)="onSubmitEdit(adherent)">
+                    <strong>{{adherent.lastname}} {{adherent.firstname}}</strong> 
+                    ({{adherent.birthday | date:"dd.MM.yyyy"}}) :  
+                    <span *ngIf="!!adherent.belt">
+                        <span *ngIf="adherent.belt === BeltType.White"><img height="30" src="./../../../../../assets/belt/belt.white.png"> Blanche</span>
+                        <span *ngIf="adherent.belt === BeltType.White1Yellow"><img height="30" src="./../../../../../assets/belt/belt.white1yellow.png"> Blanche 1 liseré</span>
+                        <span *ngIf="adherent.belt === BeltType.White2Yellow"><img height="30" src="./../../../../../assets/belt/belt.white2yellow.png"> Blanche 2 liserés</span>
+                        <span *ngIf="adherent.belt === BeltType.WhiteYellow"><img height="30" src="./../../../../../assets/belt/belt.whiteyellow.png"> Jaune</span>
+                        <span *ngIf="adherent.belt === BeltType.Yellow"><img height="30" src="./../../../../../assets/belt/belt.yellow.png"> Jaune</span>
+                        <span *ngIf="adherent.belt === BeltType.YellowOrange"><img height="30" src="./../../../../../assets/belt/belt.yellow.orange.png"> Jaune et orange</span>
+                        <span *ngIf="adherent.belt === BeltType.Orange"><img height="30" src="./../../../../../assets/belt/belt.orange.png"> Orange</span>
+                        <span *ngIf="adherent.belt === BeltType.OrangeGreen"><img height="30" src="./../../../../../assets/belt/belt.orange.green.png"> Orange et verte</span>
+                        <span *ngIf="adherent.belt === BeltType.Green"><img height="30" src="./../../../../../assets/belt/belt.green.png"> Verte</span>
+                        <span *ngIf="adherent.belt === BeltType.GreenBlue"><img height="30" src="./../../../../../assets/belt/belt.green.blue.png"> Verte et bleue</span>
+                        <span *ngIf="adherent.belt === BeltType.Blue"><img height="30" src="./../../../../../assets/belt/belt.blue.png"> Bleue</span>
+                        <span *ngIf="adherent.belt === BeltType.BlueBrown"><img height="30" src="./../../../../../assets/belt/belt.blue.brown.png"> Bleue et marron</span>
+                        <span *ngIf="adherent.belt === BeltType.Brown"><img height="30" src="./../../../../../assets/belt/belt.brown.png"> Marron</span>
+                        <span *ngIf="adherent.belt === BeltType.Black"><img height="30" src="./../../../../../assets/belt/belt.black.png"> Noire</span>
+                    </span>
+                    <span *ngIf="!!!adherent.belt">N/A</span>
+                    <mat-icon class="adherents-icon-detail" fontIcon="monitor_weight"></mat-icon>
+                    <span *ngIf="!!adherent.weight">{{adherent.weight}} kg</span>
+                    <span *ngIf="!!!adherent.weight">N/A</span>                    
+                    <mat-icon class="adherents-icon-detail" fontIcon="badge"></mat-icon>
+                    {{adherent.licenceCode}}
+                </p>                
                 <button mat-raised-button color="primary" (click)="onSubmitLink()">Ajouter un Adhérents</button>
             </div>
         </div>

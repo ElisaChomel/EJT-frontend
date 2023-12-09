@@ -43,7 +43,7 @@ export class InscriptionComponent {
 
     this.competitionSubscription = this.competitionService.getAllActive()
       .subscribe(x => {
-        this.competitions = x.sort((a, b) => {
+        this.competitions = x.filter(x => (new Date(`${x.year}-${x.month}-${x.day}`)) > new Date()).sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
 

@@ -6,6 +6,7 @@ import { IEjtAdherent } from 'src/app/models/ejt-adherent';
 import { LoaderService } from 'src/app/services/loader.service';
 import { AdminAdherentDialogComponent } from './admin-adherent-dialog/admin-adherent-dialog.component';
 import { EjtService } from 'src/app/services/ejt.service';
+import { BeltType } from 'src/app/enums/belt-type';
 
 @Component({
   selector: 'app-admin-adherent',
@@ -16,8 +17,9 @@ import { EjtService } from 'src/app/services/ejt.service';
 
 export class AdminAdherentComponent {
   Type = ActionType;
+  BeltType = BeltType;
 
-  displayedColumns: string[] = ['lastname', 'firstname', 'birthday', 'licenceCode', 'action'];
+  displayedColumns: string[] = ['lastname', 'firstname', 'birthday', 'licenceCode', 'weight', 'belt', 'action'];
   dataSource : IEjtAdherent[] = [];
 
   public ejtSubscription: Subscription = new Subscription;
@@ -45,7 +47,7 @@ export class AdminAdherentComponent {
   openDialogAdherent(a: IEjtAdherent | null, type: ActionType) {
     let dialogRef = this.dialog.open(AdminAdherentDialogComponent, {
       data: {
-        adherent: !!a ? a : {id: null, lastname: null, firstname: null, birthday: null, licenceCode: null},
+        adherent: !!a ? a : {id: null, lastname: null, firstname: null, birthday: null, licenceCode: null, weight: null, belt: null},
         type
       },
     });

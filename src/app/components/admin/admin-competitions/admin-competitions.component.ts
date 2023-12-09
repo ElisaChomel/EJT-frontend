@@ -27,7 +27,7 @@ import { LoaderService } from 'src/app/services/loader.service';
 export class AdminCompetitionsComponent {
   Type = ActionType;
 
-  displayedColumns: string[] = ['year', 'name', 'address', 'yearBirthdayMin', 'yearBirthdayMax', 'action'];
+  displayedColumns: string[] = ['date', 'name', 'address', 'yearBirthdayMin', 'yearBirthdayMax', 'action'];
   dataSource : ICompetition[] = [];
   results: ICompetitionResult[] = [];
   expandedElement: ICompetition | null = null;

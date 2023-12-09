@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -33,7 +34,7 @@ export class AdminCompetitionsDialogComponent {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-        year : [this.data.competition.year, Validators.required],
+        date : [formatDate(`${this.data.competition.year}-${this.data.competition.month}-${this.data.competition.day}`, "yyyy-MM-dd", "fr"), Validators.required],
         name: [this.data.competition.name, Validators.required],
         address: [this.data.competition.address, Validators.required],
         yearBirthdayMin: [this.data.competition.yearBirthdayMin, Validators.required],
@@ -55,7 +56,12 @@ export class AdminCompetitionsDialogComponent {
       return;
     }
 
-    this.data.competition.year = this.form.controls['year'].value;
+    const date = new Date(this.form.controls['date'].value);
+    
+    console.log(date);
+    this.data.competition.year = date.getFullYear();
+    this.data.competition.month = date.getMonth() + 1;
+    this.data.competition.day = date.getDate();
     this.data.competition.name = this.form.controls['name'].value;
     this.data.competition.address = this.form.controls['address'].value;
     this.data.competition.yearBirthdayMin = this.form.controls['yearBirthdayMin'].value;

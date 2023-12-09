@@ -22,6 +22,32 @@
             <td mat-cell *matCellDef="let element"> {{element.licenceCode}} </td>
           </ng-container>
         
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Poids</th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} Kg</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="belt">
+            <th mat-header-cell *matHeaderCellDef>Ceinture</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="!!!element.belt">N/A</span>
+              <span *ngIf="element.belt === BeltType.White"><img height="30" src="./../../../../../assets/belt/belt.white.png"> Blanche</span>
+              <span *ngIf="element.belt === BeltType.White1Yellow"><img height="30" src="./../../../../../assets/belt/belt.white1yellow.png"> Blanche 1 liseré</span>
+              <span *ngIf="element.belt === BeltType.White2Yellow"><img height="30" src="./../../../../../assets/belt/belt.white2yellow.png"> Blanche 2 liserés</span>
+              <span *ngIf="element.belt === BeltType.WhiteYellow"><img height="30" src="./../../../../../assets/belt/belt.whiteyellow.png"> Jaune</span>
+              <span *ngIf="element.belt === BeltType.Yellow"><img height="30" src="./../../../../../assets/belt/belt.yellow.png"> Jaune</span>
+              <span *ngIf="element.belt === BeltType.YellowOrange"><img height="30" src="./../../../../../assets/belt/belt.yellow.orange.png"> Jaune et orange</span>
+              <span *ngIf="element.belt === BeltType.Orange"><img height="30" src="./../../../../../assets/belt/belt.orange.png"> Orange</span>
+              <span *ngIf="element.belt === BeltType.OrangeGreen"><img height="30" src="./../../../../../assets/belt/belt.orange.green.png"> Orange et verte</span>
+              <span *ngIf="element.belt === BeltType.Green"><img height="30" src="./../../../../../assets/belt/belt.green.png"> Verte</span>
+              <span *ngIf="element.belt === BeltType.GreenBlue"><img height="30" src="./../../../../../assets/belt/belt.green.blue.png"> Verte et bleue</span>
+              <span *ngIf="element.belt === BeltType.Blue"><img height="30" src="./../../../../../assets/belt/belt.blue.png"> Bleue</span>
+              <span *ngIf="element.belt === BeltType.BlueBrown"><img height="30" src="./../../../../../assets/belt/belt.blue.brown.png"> Bleue et marron</span>
+              <span *ngIf="element.belt === BeltType.Brown"><img height="30" src="./../../../../../assets/belt/belt.brown.png"> Marron</span>
+              <span *ngIf="element.belt === BeltType.Black"><img height="30" src="./../../../../../assets/belt/belt.black.png"> Noire</span>
+            </td>
+          </ng-container>
+        
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>
               <a class="button-icon" (click)="openDialogAdherent(null, Type.Add)">

@@ -4,8 +4,8 @@
 <form class="competition-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div mat-dialog-content>
         <mat-form-field>
-            <mat-label>Année</mat-label>
-            <input matInput formControlName="year" required type="number" min="2000" max="2100">
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="date" required type="date">
         </mat-form-field>
 
         <mat-form-field>

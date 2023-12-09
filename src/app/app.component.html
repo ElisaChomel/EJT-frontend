@@ -66,6 +66,7 @@
     Administration
   </button>
 </mat-menu>
+
 <mat-menu #menuCompetition="matMenu">
   <button mat-menu-item routerLink="/competitions">
     <mat-icon aria-label="Compétitions" fontIcon="emoji_events"></mat-icon>
@@ -75,6 +76,13 @@
     <mat-icon aria-label="Compétitions" fontIcon="edit"></mat-icon>
     Compétitions - Inscription
   </button>
+</mat-menu>
+
+<mat-menu #menuMaitres="matMenu">
+  <button mat-menu-item routerLink="/jigorokano">
+    <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
+    Jigoro Kano
+  </button> 
 </mat-menu>
 
 <!-- Menu -->
@@ -87,9 +95,9 @@
     <mat-icon aria-label="QuiSommesNous" fontIcon="group"></mat-icon>
     Qui sommes nous
   </a>
-  <a routerLink="/jigorokano">
-    <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
-    Jigoro Kano
+  <a [matMenuTriggerFor]="menuMaitres">
+    <mat-icon aria-label="Maitres" fontIcon="person"></mat-icon>
+    Les maîtres
   </a>
   <a routerLink="/new">
     <mat-icon aria-label="News" fontIcon="info"></mat-icon>
@@ -107,36 +115,14 @@
     <div class="sponsors-container info-container">
       <h1>Nos Soutiens</h1>
       <div class="sponsors-list">
-        <a target="#" href="http://www.thierry-chefneux.com">
-          <img src="../assets/sponsors/sponsors-1.png"/>
-        </a>
-        <a href="#">
-            <img src="../assets/sponsors/sponsors-2.png"/>
-        </a>
-        <a href="#">
-          <img src="../assets/sponsors/sponsors-3.png"/>
-        </a>
-        <a href="#">
-          <img src="../assets/sponsors/sponsors-4.png"/>
-        </a>
-        <a target="#" href="http://www.garage-flachy.com">
-          <img src="../assets/sponsors/sponsors-5.png"/>
-        </a>
-        <a target="#" href="http://crozatelectricite.com">
-          <img src="../assets/sponsors/sponsors-6.png"/>
-        </a>
-        <a href="#">
-          <img src="../assets/sponsors/sponsors-7.png"/>
-        </a>
-        <a href="#">
-          <img src="../assets/sponsors/sponsors-8.png"/>
-        </a>
-        <a href="#">
-          <img src="../assets/sponsors/sponsors-9.png"/>
-        </a>
-        <a href="#" href="https://manoirsakana.com">
-          <img src="../assets/sponsors/sponsors-10.png"/>
-        </a>
+        <ng-container *ngFor='let sponsor of sponsors'>
+          <a *ngIf="!!sponsor.href" target="#" [href]="sponsor.href">
+            <img [src]="sponsor.img"/>
+          </a>
+          <a *ngIf="!!!sponsor.href" href="#">
+            <img [src]="sponsor.img"/>
+          </a>
+        </ng-container>
       </div>
     </div>
 

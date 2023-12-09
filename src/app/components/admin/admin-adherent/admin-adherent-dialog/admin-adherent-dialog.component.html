@@ -1,5 +1,5 @@
 <h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter un ADHERENT</h1>
-<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de l'ADHERENT'</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de l'ADHERENT</h1>
 
 <form class="adherent-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div mat-dialog-content>
@@ -21,6 +21,47 @@
         <mat-form-field>
             <mat-label>Licence</mat-label>       
             <input  matInput formControlName="licenceCode" required>
+        </mat-form-field>        
+
+        <mat-form-field>
+            <mat-label>Poids (en kg)</mat-label>       
+            <input  matInput formControlName="weight">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Ceinture</mat-label>   
+            <mat-select formControlName="belt">
+                <mat-select-trigger>
+                    <span *ngIf="form.controls['belt'].value === BeltType.White"><img height="30" src="./../../../../../assets/belt/belt.white.png"> Blanche</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.White1Yellow"><img height="30" src="./../../../../../assets/belt/belt.white1yellow.png"> Blanche 1 liseré</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.White2Yellow"><img height="30" src="./../../../../../assets/belt/belt.white2yellow.png"> Blanche 2 liserés</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.WhiteYellow"><img height="30" src="./../../../../../assets/belt/belt.whiteyellow.png"> Jaune</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Yellow"><img height="30" src="./../../../../../assets/belt/belt.yellow.png"> Jaune</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.YellowOrange"><img height="30" src="./../../../../../assets/belt/belt.yellow.orange.png"> Jaune et orange</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Orange"><img height="30" src="./../../../../../assets/belt/belt.orange.png"> Orange</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.OrangeGreen"><img height="30" src="./../../../../../assets/belt/belt.orange.green.png"> Orange et verte</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Green"><img height="30" src="./../../../../../assets/belt/belt.green.png"> Verte</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.GreenBlue"><img height="30" src="./../../../../../assets/belt/belt.green.blue.png"> Verte et bleue</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Blue"><img height="30" src="./../../../../../assets/belt/belt.blue.png"> Bleue</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.BlueBrown"><img height="30" src="./../../../../../assets/belt/belt.blue.brown.png"> Bleue et marron</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Brown"><img height="30" src="./../../../../../assets/belt/belt.brown.png"> Marron</span>
+                    <span *ngIf="form.controls['belt'].value === BeltType.Black"><img height="30" src="./../../../../../assets/belt/belt.black.png"> Noire</span>
+                </mat-select-trigger>
+                <mat-option [value]="BeltType.White"><img height="30" src="./../../../../../assets/belt/belt.white.png"> Blanche</mat-option>
+                <mat-option [value]="BeltType.White1Yellow"><img height="30" src="./../../../../../assets/belt/belt.white1yellow.png"> Blanche 1 liseré</mat-option>
+                <mat-option [value]="BeltType.White2Yellow"><img height="30" src="./../../../../../assets/belt/belt.white2yellow.png"> Blanche 2 liserés</mat-option>
+                <mat-option [value]="BeltType.WhiteYellow"><img height="30" src="./../../../../../assets/belt/belt.whiteyellow.png"> Bhance et jaune</mat-option>
+                <mat-option [value]="BeltType.Yellow"><img height="30" src="./../../../../../assets/belt/belt.yellow.png"> Jaune</mat-option>
+                <mat-option [value]="BeltType.YellowOrange"><img height="30" src="./../../../../../assets/belt/belt.yellow.orange.png"> Jaune et orange</mat-option>
+                <mat-option [value]="BeltType.Orange"><img height="30" src="./../../../../../assets/belt/belt.orange.png"> Orange</mat-option>
+                <mat-option [value]="BeltType.OrangeGreen"><img height="30" src="./../../../../../assets/belt/belt.orange.green.png"> Orange et verte</mat-option>
+                <mat-option [value]="BeltType.Green"><img height="30" src="./../../../../../assets/belt/belt.green.png"> Verte</mat-option>
+                <mat-option [value]="BeltType.GreenBlue"><img height="30" src="./../../../../../assets/belt/belt.green.blue.png"> Verte et bleue</mat-option>
+                <mat-option [value]="BeltType.Blue"><img height="30" src="./../../../../../assets/belt/belt.blue.png"> Bleue</mat-option>
+                <mat-option [value]="BeltType.BlueBrown"><img height="30" src="./../../../../../assets/belt/belt.blue.brown.png"> Bleue et marron</mat-option>
+                <mat-option [value]="BeltType.Brown"><img height="30" src="./../../../../../assets/belt/belt.brown.png"> Marron</mat-option>
+                <mat-option [value]="BeltType.Black"><img height="30" src="./../../../../../assets/belt/belt.black.png"> Noire</mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
     <div mat-dialog-action>

@@ -6,7 +6,7 @@
     <mat-form-field class="field-competitions">
         <mat-label>Liste des compétitions</mat-label>
         <mat-select formControlName="competition" >
-          <mat-option *ngFor="let c of competitions" [value]="c.id">{{c.name}} (année de naissance authorisée : {{c.yearBirthdayMax}} - {{c.yearBirthdayMin}})</mat-option>
+          <mat-option *ngFor="let c of competitions" [value]="c.id">{{c.year}}-{{c.month | number : '2.0-0'}}-{{c.day| number : '2.0-0'}} - {{c.name}} (année de naissance authorisée : {{c.yearBirthdayMax}} - {{c.yearBirthdayMin}})</mat-option>
         </mat-select>
     </mat-form-field>
   
