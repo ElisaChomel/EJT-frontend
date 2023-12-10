@@ -61,7 +61,7 @@
   font-weight: bold;
 }
 
-.menu{
+.menu {
   position: absolute;
   top: $header-heigth;
   left: 0px;
@@ -73,7 +73,14 @@
   a {
     width: 200px;
   }
+  padding: 0px!important;
 }
+
+.menu-maitres{
+  height: 20px;
+  margin: 0px;
+  padding: 20px!important;
+} 
 
 .menu-full{
   display: none;

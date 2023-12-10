@@ -132,6 +132,12 @@ html, body{
     color: $primary-color;
   }
 
+  h3{
+    margin-top: 30px;
+    font-size: 14px;
+    color: $primary-color;
+  }
+
   p {
     margin: 0;
   }
@@ -230,9 +236,3 @@ html, body{
   .mat-mdc-header-row{
     color: $primary-color;
   }
-
- .mat-mdc-menu-trigger{
-    height: 20px;
-    margin: 0px;
-    padding: 20px!important;
- } 
