@@ -1,0 +1,46 @@
+<h1>Inscription aux stages ...</h1>
+
+<div class="stages-container">
+
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="stages.length !== 0 && adherents.length !== 0">
+    <mat-form-field class="field-stages">
+        <mat-label>Liste des stages</mat-label>
+        <mat-select formControlName="stage" (selectionChange)="stageChange($event)">
+          <mat-option *ngFor="let s of stages" [value]="s.id">{{s.start | date:"dd.MM.yyyy"}} au {{s.end | date:"dd.MM.yyyy"}} - {{s.name}} (année de naissance authorisée : {{s.yearBirthdayMax}} - {{s.yearBirthdayMin}})</mat-option>
+        </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="field-adherent">
+        <mat-label>Adhérent</mat-label>
+        <mat-select formControlName="adherent">
+          <mat-option *ngFor="let a of adherents" [value]="a.id">{{a.lastname}} {{a.firstname}} (date de naissance : {{a.birthday | date:"dd.MM.yyyy"}})</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="error">            
+      <p *ngIf="displayErrorAlreadyRegistered()">L'adhérent est déjà inscrit à ce stage.</p>
+      <p *ngIf="displayErrorBirthday()">L'adhérent n'a pas l'age requit.</p>
+    </div>
+
+    <button mat-raised-button [disabled]="form.invalid || displayErrorAlreadyRegistered() || displayErrorBirthday()" color="primary">Inscription</button>
+  </form> 
+  
+  <div *ngIf="adherents.length === 0" class="stages-data">
+    <h1>Pas d'adhérent - Merci de contacter le bureau</h1>
+  </div>
+
+  <div *ngIf="!!!stageSelected" class="stages-data">
+    <p>Merci de séléctionner un stage dans le liste</p>
+  </div>
+
+  <div *ngIf="!!stageSelected" class="stages-data">
+    <h2>Liste des inscrits au stage '{{stageSelected.name}}'</h2>
+    <div class="stages-data-adherent" *ngIf="adherentsStageInscription.length > 0">
+      <p *ngFor="let a of adherentsStageInscription">{{a.firstname}} {{a.lastname}}</p>
+    </div>
+    <p class="stages-data-adherent" *ngIf="adherentsStageInscription.length == 0">
+      Il n'y a pas encore d'inscrit pour ce stage
+    </p>
+  </div>
+</div>
+

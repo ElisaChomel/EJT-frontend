@@ -10,7 +10,7 @@ export interface IEjtAdherent {
     belt: BeltType
 }
 
-export interface IEjtAdherentInscipriton {
+export interface IEjtAdherentInscription {
     id: number;
-    competitions: number[];
+    inscriptionsId: number[];
 }

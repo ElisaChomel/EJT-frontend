@@ -1,11 +1,17 @@
-<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter une COMPETITION</h1>
-<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification de la COMPETITION</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Add">Ajouter un STAGE</h1>
+<h1 mat-dialog-title *ngIf="data.type === Type.Edit">Modification d'un STAGE</h1>
 
-<form class="competition-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+<form class="stage-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div mat-dialog-content>
         <mat-form-field>
-            <mat-label>Date</mat-label>
-            <input matInput formControlName="date" required type="date">
+            <mat-label>Date de début</mat-label>
+            <input matInput formControlName="start" required type="date">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Date de fin</mat-label>
+            <input matInput formControlName="end" required type="date">
         </mat-form-field>
 
         <mat-form-field>
@@ -36,4 +42,4 @@
     <div mat-dialog-action>
         <button mat-raised-button [disabled]="form.invalid" color="primary">Sauvegarder</button>
     </div>
-</form>    
+</form>

@@ -56,6 +56,10 @@
   <button mat-menu-item routerLink="/document">
     <mat-icon aria-label="Documents" fontIcon="description"></mat-icon>
     Documents
+  </button>   
+  <button mat-menu-item routerLink="/stages" *ngIf="userService.userSubject.value !== null">
+    <mat-icon aria-label="Stages" fontIcon="school"></mat-icon>
+    Stages
   </button> 
   <button mat-menu-item [matMenuTriggerFor]="menuCompetition" *ngIf="!!userService.userSubject.value">
     <mat-icon aria-label="Compétitions" fontIcon="emoji_events"></mat-icon>
@@ -68,14 +72,14 @@
 </mat-menu>
 
 <mat-menu #menuCompetition="matMenu">
-  <button mat-menu-item routerLink="/competitions">
-    <mat-icon aria-label="Compétitions" fontIcon="emoji_events"></mat-icon>
-    Compétitions - Résultat
-  </button> 
   <button mat-menu-item routerLink="/competitions/inscription">
     <mat-icon aria-label="Compétitions" fontIcon="edit"></mat-icon>
     Compétitions - Inscription
   </button>
+  <button mat-menu-item routerLink="/competitions">
+    <mat-icon aria-label="Compétitions" fontIcon="emoji_events"></mat-icon>
+    Compétitions - Résultat
+  </button> 
 </mat-menu>
 
 <mat-menu #menuMaitres="matMenu">

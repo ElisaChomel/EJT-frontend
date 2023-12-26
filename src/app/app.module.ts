@@ -19,7 +19,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
   declarations: [
     AppComponent,   
     HomeComponent, 
-    ContactusComponent,     
+    ContactusComponent,   
   ],
   imports: [
     HttpClientModule,

@@ -21,7 +21,13 @@ export class CompetitionService {
 
   public getAllActive(): Observable<ICompetition[]> {
     return this.http.get<ICompetition[]>(`${this.apiRoot}/active`);
-  }  
+  } 
+
+  public getAllInscription(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiRoot}/${id}/export`, {
+      responseType: "blob"
+    });
+  } 
 
   public getCompetitionsInscription(adherentId: number): Observable<number[]> {
     return this.http.get<number[]>(`${this.apiRoot}/adherent/${adherentId}`);

@@ -6,5 +6,6 @@ export interface ICompetition {
     name:string;
     address: string;
     yearBirthdayMin: number;
-    yearBirthdayMax: number
+    yearBirthdayMax: number;    
+    maxInscriptionDate: Date;
 }

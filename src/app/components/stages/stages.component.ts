@@ -2,48 +2,51 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { ICompetition } from 'src/app/models/competition';
 import { IEjtAdherent, IEjtAdherentInscription } from 'src/app/models/ejt-adherent';
-import { CompetitionService } from 'src/app/services/competition.service';
+import { IStage } from 'src/app/models/stage';
 import { LoaderService } from 'src/app/services/loader.service';
+import { StageService } from 'src/app/services/stage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-inscription',
-  templateUrl: './inscription.component.html',
-  styleUrls: ['./inscription.component.scss']
+  selector: 'app-stages',
+  templateUrl: './stages.component.html',
+  styleUrls: ['./stages.component.scss']
 })
-export class InscriptionComponent {
+export class StagesComponent {
   public form: FormGroup;
 
-  public competitionSubscription: Subscription = new Subscription;
-  public competitionResultSubscription: Subscription = new Subscription;
-  public adherentsSubscription: Subscription = new Subscription;
+  public stagesSubscription: Subscription = new Subscription;
+  public inscriptionSubscription: Subscription = new Subscription;
   public adherentsInscriptionSubscription: Subscription = new Subscription;
- 
-  competitions: ICompetition[] = [];
-  adherents: IEjtAdherent[] = [];
+  public adherentsSubscription: Subscription = new Subscription;  
+  public adherentsStagesSubscription: Subscription = new Subscription;
+
+  stages: IStage[] = [];
+  adherents: IEjtAdherent[] = [];  
   adherentsInscription: IEjtAdherentInscription[] = [];
+  adherentsStageInscription: IEjtAdherent[] = [];
+  stageSelected : IStage | undefined = undefined;
 
   constructor(
-    public competitionService: CompetitionService,
+    public stageService: StageService,
     public userService: UserService,
     private loaderService: LoaderService, 
     private formBuilder: FormBuilder,
     private toastr: ToastrService,   
     private cdr: ChangeDetectorRef) {}
-  
+
   ngOnInit () {
     this.loaderService.show();
 
     this.form = this.formBuilder.group({
-      competition: ['', Validators.required],
+      stage: ['', Validators.required],
       adherent: ['', Validators.required]
     }); 
 
-    this.competitionSubscription = this.competitionService.getAllActive()
+    this.stagesSubscription = this.stageService.getAllActive()
       .subscribe(x => {
-        this.competitions = x.filter(x => (new Date(`${x.year}-${x.month}-${x.day}`)) > new Date()).sort((a, b) => {
+        this.stages = x.filter(x => (new Date(x.start)) > new Date()).sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
 
@@ -58,8 +61,8 @@ export class InscriptionComponent {
               }
 
               this.adherents.forEach(x => {
-                this.adherentsInscriptionSubscription = this.competitionService.getCompetitionsInscription(x.id).subscribe(competitionsId => {
-                  this.adherentsInscription.push({id: x.id, inscriptionsId: competitionsId});
+                this.adherentsInscriptionSubscription = this.stageService.getStagesInscription(x.id).subscribe(stagesId => {
+                  this.adherentsInscription.push({id: x.id, inscriptionsId: stagesId});
                 });  
                 
                 this.loaderService.hide();
@@ -76,19 +79,20 @@ export class InscriptionComponent {
   } 
     
   ngOnDestroy() {
-    this.competitionSubscription.unsubscribe();      
+    this.stagesSubscription.unsubscribe();   
     this.adherentsSubscription?.unsubscribe(); 
-    this.competitionResultSubscription?.unsubscribe(); 
     this.adherentsInscriptionSubscription?.unsubscribe();
+    this.adherentsStagesSubscription?.unsubscribe();
+    this.inscriptionSubscription?.unsubscribe();
   }  
 
   public displayErrorAlreadyRegistered(): boolean{
     let ret = false;
 
-    if(this.form.controls['competition'].value !== null && this.form.controls['adherent'].value){
+    if(this.form.controls['stage'].value !== null && this.form.controls['adherent'].value){
       let list = this.adherentsInscription.find(x => x.id === this.form.controls['adherent'].value);
 
-      if(list?.inscriptionsId.find(x => x === this.form.controls['competition'].value)){
+      if(list?.inscriptionsId.find(x => x === this.form.controls['stage'].value)){
         ret = true;
       }
     }
@@ -99,8 +103,8 @@ export class InscriptionComponent {
   public displayErrorBirthday(): boolean{
     let ret = false;
 
-    if(this.form.controls['competition'].value !== null && this.form.controls['adherent'].value){
-      const c = this.competitions.find(x => x.id == this.form.controls['competition'].value);
+    if(this.form.controls['stage'].value !== null && this.form.controls['adherent'].value){
+      const c = this.stages.find(x => x.id == this.form.controls['stage'].value);
       const a = this.adherents.find(x => x.id == this.form.controls['adherent'].value);
 
       if(!!a && !!c){
@@ -120,23 +124,25 @@ export class InscriptionComponent {
       return;
     } 
 
-    this.competitionResultSubscription = this.competitionService.createResult({
-      id:0, 
-      competition_id: this.form.controls['competition'].value, 
-      adherent_id: this.form.controls['adherent'].value,
-      name: '',
-      firstname: '',
-      position: null
-    })
+    this.inscriptionSubscription = this.stageService.createStageInscription(this.form.controls['stage'].value,  this.form.controls['adherent'].value)
     .subscribe({
       next: (x) => {        
-        this.adherentsInscription.find(x => x.id === this.form.controls['adherent'].value)?.inscriptionsId.push(this.form.controls['competition'].value);
+        this.adherentsInscription.find(x => x.id === this.form.controls['adherent'].value)?.inscriptionsId.push(this.form.controls['stage'].value);
         this.cdr.detectChanges();   
-        this.toastr.success('Succès de la l\'inscription à la compétition');
+        this.toastr.success('Succès de la l\'inscription au stage');
       },
       error: () => {
-        this.toastr.error('Echec de la l\'inscription à la compétition');
+        this.toastr.error('Echec de la l\'inscription au stage');
       }
+    });
+  }
+
+  public stageChange(event:any): void{
+    this.stageSelected = this.stages.find(x => x.id == event.value);
+    this.adherentsStagesSubscription = this.stageService.getAdherentsInscription(event.value).subscribe(x => {
+      this.adherentsStageInscription = x;
+      console.log(this.adherentsStageInscription);
+      this.cdr.detectChanges();
     });
   }
 }

@@ -38,7 +38,8 @@ export class AdminCompetitionsDialogComponent {
         name: [this.data.competition.name, Validators.required],
         address: [this.data.competition.address, Validators.required],
         yearBirthdayMin: [this.data.competition.yearBirthdayMin, Validators.required],
-        yearBirthdayMax: [this.data.competition.yearBirthdayMax, Validators.required]
+        yearBirthdayMax: [this.data.competition.yearBirthdayMax, Validators.required],
+        maxInscriptionDate: [formatDate(this.data.competition.maxInscriptionDate, "yyyy-MM-dd", "fr"), Validators.required]
     }); 
   }
 
@@ -57,8 +58,8 @@ export class AdminCompetitionsDialogComponent {
     }
 
     const date = new Date(this.form.controls['date'].value);
+    const maxInscriptionDate = new Date(this.form.controls['maxInscriptionDate'].value);
     
-    console.log(date);
     this.data.competition.year = date.getFullYear();
     this.data.competition.month = date.getMonth() + 1;
     this.data.competition.day = date.getDate();
@@ -66,6 +67,7 @@ export class AdminCompetitionsDialogComponent {
     this.data.competition.address = this.form.controls['address'].value;
     this.data.competition.yearBirthdayMin = this.form.controls['yearBirthdayMin'].value;
     this.data.competition.yearBirthdayMax = this.form.controls['yearBirthdayMax'].value;
+    this.data.competition.maxInscriptionDate = maxInscriptionDate;
 
     if(this.data.type === ActionType.Add){
       this.data.competition.id = 0;

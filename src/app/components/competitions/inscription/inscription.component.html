@@ -1,4 +1,4 @@
-<h1>Inscription ...</h1>
+<h1>Inscription aux compétitions ...</h1>
 
 <div class="competitions-container">
 
@@ -25,6 +25,10 @@
     <button mat-raised-button [disabled]="form.invalid || displayErrorAlreadyRegistered() || displayErrorBirthday()" color="primary">Inscription</button>
   </form> 
   
+  <div *ngIf="competitions.length === 0" class="competition-data">
+    <h1>Pas de compétition de prévu pour le moment</h1>
+  </div>
+
   <div *ngIf="adherents.length === 0" class="competition-data">
     <h1>Pas d'adhérent - Merci de contacter le bureau</h1>
   </div>

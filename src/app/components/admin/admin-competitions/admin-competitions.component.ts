@@ -27,13 +27,14 @@ import { LoaderService } from 'src/app/services/loader.service';
 export class AdminCompetitionsComponent {
   Type = ActionType;
 
-  displayedColumns: string[] = ['date', 'name', 'address', 'yearBirthdayMin', 'yearBirthdayMax', 'action'];
+  displayedColumns: string[] = ['date', 'name', 'address', 'yearBirthdayMin', 'yearBirthdayMax', 'maxInscriptionDate', 'action'];
   dataSource : ICompetition[] = [];
   results: ICompetitionResult[] = [];
   expandedElement: ICompetition | null = null;
 
   public competitionSubscription: Subscription = new Subscription;
   public competitionResultSubscription: Subscription = new Subscription;
+  public exportSubscription: Subscription = new Subscription;
 
   constructor(
     public dialog: MatDialog, 
@@ -54,7 +55,20 @@ export class AdminCompetitionsComponent {
   ngOnDestroy() {
     this.competitionSubscription.unsubscribe();    
     this.competitionResultSubscription?.unsubscribe();
+    this.exportSubscription?.unsubscribe();
   }   
+
+  export(){
+    if(!!this.expandedElement){
+      this.loaderService.show();
+      this.exportSubscription = this.competitionService.getAllInscription(this.expandedElement.id)
+        .subscribe(x =>{   
+          this.loaderService.hide();
+          var url = URL.createObjectURL(x);
+          window.open(url);
+        });
+    }
+  }
 
   onExtend(row: ICompetition): void{
     this.expandedElement = this.expandedElement === row ? null : row;
@@ -68,23 +82,13 @@ export class AdminCompetitionsComponent {
     }
   }
 
-  isTerminate(): boolean{
-    let isTerminate = true;
-    this.results.forEach(x => {
-      if(x.position == null){
-        isTerminate = false;
-      }
-    });
-
-    return isTerminate
-  }
-
   openDialogCompetition(c: ICompetition | null, type: ActionType) {
     let dialogRef = this.dialog.open(AdminCompetitionsDialogComponent, {
       data: {
-        competition: !!c ? c : {id: null, year: null, name: null, address: null, yearBirthdayMin: null, yearBirthdayMax: null},
+        competition: !!c ? c : {id: null, year: null, month: null, day: null, name: null, address: null, yearBirthdayMin: null, yearBirthdayMax: null, maxInscriptionDate: null},
         type
       },
+      width: '500px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

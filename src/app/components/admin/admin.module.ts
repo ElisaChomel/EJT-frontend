@@ -20,6 +20,8 @@ import { AdminCompetitionsComponent } from "./admin-competitions/admin-competiti
 import { AdminCompetitionsDialogComponent } from "./admin-competitions/admin-competitions-dialog/admin-competitions-dialog.component";
 import { AdminCompetitionsResultDialogComponent } from "./admin-competitions/admin-competitions-result-dialog/admin-competitions-result-dialog.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
+import { AdminStagesComponent } from './admin-stages/admin-stages.component';
+import { AdminStagesDialogComponent } from './admin-stages/admin-stages-dialog/admin-stages-dialog.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { AdminUsersComponent } from "./admin-users/admin-users.component";
         AdminEjtComponent,
         AdminEjtDialogComponent,
         AdminAdherentComponent,
-        AdminAdherentDialogComponent
+        AdminAdherentDialogComponent,
+        AdminStagesComponent,
+        AdminStagesDialogComponent
     ],
     imports: [
         AdminRoutingModule,

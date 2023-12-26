@@ -17,6 +17,20 @@
         border-radius: 10px;
     }
 
+    .president{
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 40px);
+        background-color: $background-color-2;
+        padding: 20px;
+        border-radius: 10px;
+
+        p{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
     .membres, .profs{
         flex-wrap: wrap;
         justify-content: space-evenly;
