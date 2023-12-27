@@ -37,10 +37,10 @@
     <mat-icon aria-label="QuiSommesNous" fontIcon="group"></mat-icon>
     Qui sommes nous
   </button>
-  <button class="menu-full" mat-menu-item routerLink="/jigorokano">
-    <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
-    Jigoro Kano
-  </button>
+  <button class="menu-full" mat-menu-item [matMenuTriggerFor]="menuMaitres">
+    <mat-icon aria-label="Maitres" fontIcon="person"></mat-icon>
+    Les maîtres
+  </button> 
   <button class="menu-full" mat-menu-item routerLink="/new">
     <mat-icon aria-label="News" fontIcon="info"></mat-icon>
     News
