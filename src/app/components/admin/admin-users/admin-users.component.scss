@@ -59,24 +59,6 @@ tr.detail-row {
     color:$primary-darker-color;
 }
 
-.element-detail {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    .element-detail-header{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;        
-        
-        p {
-            color: $primary-color;
-        }
-    }
-}
-
 .collapsed{
     height: 0px!important;
     min-height: 0px!important;

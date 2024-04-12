@@ -1,0 +1,19 @@
+.mat-mdc-dialog-content{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 20px);
+    padding: 10px;
+
+    .dialog-container{
+        display: flex;
+        flex-direction: column;
+    }
+}

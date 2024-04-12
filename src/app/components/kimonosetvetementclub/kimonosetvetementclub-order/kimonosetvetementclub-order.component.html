@@ -1,0 +1,42 @@
+<h1><span>Commande ...</span><button mat-raised-button color="accent" (click)="displaySizeInfo()">Guide des tailles</button></h1>
+<div class="order-container">
+    <div class="items">
+        <app-kimonosetvetementclub-order-item ref="SHIRO" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>
+        <app-kimonosetvetementclub-order-item ref="KODOMO" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>
+        <app-kimonosetvetementclub-order-item ref="HAYATO JUNIOR" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>
+        <app-kimonosetvetementclub-order-item ref="HAYATO ADULTE" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>
+        <app-kimonosetvetementclub-order-item ref="KEIKO 2 JUNIOR" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>
+        <app-kimonosetvetementclub-order-item ref="KEIKO 2 ADULTE" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>   
+        <app-kimonosetvetementclub-order-item ref="MIZUNO TERRY HOODIE JUNIOR" (orderItemEvent)="addItem($event)"></app-kimonosetvetementclub-order-item>       
+    </div>
+    <form class="panier" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1>Panier</h1>
+        <mat-form-field class="field-email">
+            <mat-label>Email</mat-label>       
+            <input matInput formControlName="email" required>
+        </mat-form-field>
+        <div class="panier-container" *ngIf="order.items.length == 0">
+            <p>Pas d'élément dans le panier</p>
+        </div>
+        <div class="panier-container" *ngIf="order.items.length != 0">
+            <div *ngFor="let item of order.items">
+                <div class="item-info-action">
+                    <div class="item-info">
+                        <b>{{item.ref}}</b> 
+                        <p>{{item.price}}€</p>
+                    </div>
+                    <mat-icon aria-label="supprimer" fontIcon="delete" (click)="delete(item)"></mat-icon>
+                </div>
+                <ul>
+                    <li>taille : {{item.size}}</li>
+                    <li>quantité : {{item.quantity}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="panier-total">
+            <b>TOTAL</b>
+            <p>{{order.price}}€</p>
+        </div>
+        <button [disabled]="order.items.length == 0 || form.invalid" mat-raised-button color="primary">Valider</button>
+    </form>
+</div>

@@ -1,0 +1,58 @@
+@import "./../../../../../styles.scss";
+
+.item{
+    display: flex;
+    flex-direction: column;
+    border : 1px solid $primary-lighter-color;
+    width: 250px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    .image{
+        width: calc(250px - 40px);
+        height: calc(250px - 40px);
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            max-width: calc(100% - 40px);
+            max-height: calc(100% - 40px);
+        }
+    }
+
+    .info{        
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        b{
+            display: block;
+            width: 50%;
+        }
+
+        p{
+            text-align: right;
+            width: 50%;
+        }
+    }
+
+    .order-item-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .item{
+        width: 200px!important;
+
+        .image{
+            width: calc(200px - 40px);
+            height: calc(200px - 40px);
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@import "./../../../styles.scss";
+
+.kimono-container{
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 50px);
+    overflow: auto;
+}

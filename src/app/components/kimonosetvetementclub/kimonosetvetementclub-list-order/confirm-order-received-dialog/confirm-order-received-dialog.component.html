@@ -1,0 +1,14 @@
+<h1 mat-dialog-title><strong>Confirmation de la reception de commande</strong></h1>
+
+<div class="form">
+    <div mat-dialog-content class="dialog-container">
+        <b>ATTENTION, vous allez confirmer la réception de commande.</b>
+        <p>Un email sera envoyer à tous les acheteurs pour les informer de l'arrivé de leur commande.</p>
+        <mat-checkbox (change)="setIsConfirmCheckbox($event.checked)">
+            Confirmer la réinitialisation de la date
+        </mat-checkbox>
+    </div>
+    <div mat-dialog-action>
+        <button mat-raised-button [disabled]="!isConfirmCheckbox" color="primary" (click)="onSubmit()">Confirmer</button>
+    </div>
+</div>

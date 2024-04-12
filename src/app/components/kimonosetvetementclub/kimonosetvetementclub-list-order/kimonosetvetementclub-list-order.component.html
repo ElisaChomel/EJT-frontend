@@ -1,0 +1,63 @@
+<h1>Commande à effectuer le <b>{{orderDate | date:"dd/MM/yyyy"}}</b> ...</h1>
+
+<div class="kimono-action">
+  <div class="kimono-action-l">    
+    <button mat-raised-button color="primary" [disabled]="dataSource.length == 0" (click)="export()">Extraire</button>
+    <button mat-raised-button color="primary" [disabled]="dataSource.length == 0" (click)="openDisplayDialogConfirmOrderReceived()">Commande reçu</button>
+  </div>
+  <button mat-raised-button color="accent" (click)="openDisplayDialogConfirmNewDate()">Nouvelle Date</button>  
+</div>
+
+<div class="kimono-container">
+    <section class="table-container mat-elevation-z8" tabindex="0">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort (matSortChange)="sortData($event)">
+            <ng-container matColumnDef="orderRef">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header="orderRef">Référence Commande</th>
+              <td mat-cell *matCellDef="let element"> {{element.orderRef}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header="email">Email</th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="isPay">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header="isPay">Payer</th>
+              <td mat-cell *matCellDef="let element"> 
+                <mat-icon *ngIf="element.isPay" class="icon-ok" aria-label="Payer" fontIcon="check_circle"></mat-icon>
+                <mat-icon *ngIf="!element.isPay" class="icon-nok" aria-label="Payer" fontIcon="cancel"></mat-icon>
+              </td>
+            </ng-container>
+                        
+            <ng-container matColumnDef="ref">
+              <th mat-header-cell *matHeaderCellDef>Vêtement</th>
+              <td mat-cell *matCellDef="let element"> {{element.ref}} </td>
+            </ng-container>
+                        
+            <ng-container matColumnDef="size">
+              <th mat-header-cell *matHeaderCellDef>Taille</th>
+              <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+            </ng-container>
+                        
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef>Quantité</th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+                        
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef>Prix</th>
+              <td mat-cell *matCellDef="let element"> {{element.price}} €</td>
+            </ng-container>
+          
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element"> 
+                <button *ngIf="!element.isPay" mat-raised-button color="primary" (click)="isPay(element.id)">Payer</button>
+              </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></tr>
+        </table>
+    </section>
+</div>

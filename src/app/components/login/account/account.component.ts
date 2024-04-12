@@ -137,7 +137,6 @@ export class AccountComponent extends PasswordCheck {
   }
 
   onSubmitEdit(adherent: IEjtAdherent): void{
-    console.log("Edit Adherent");
     let dialogRef = this.dialog.open(AdminAdherentDialogComponent, {
       data: { adherent, type : ActionType.Edit},
       width: '500px',

@@ -1,0 +1,32 @@
+@import "./../../../styles.scss";
+
+.tarif-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    table, th, td{
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+    }
+
+    th, .empty{
+        background-color: $primary-lighter-color;
+    }
+
+    .small{
+        display:none;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .full{
+        display:none;
+    }
+
+    .small{
+        display: block!important;
+    }
+}

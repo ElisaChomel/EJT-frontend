@@ -23,8 +23,9 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { PdfViewerModule } from "ng2-pdf-viewer";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminAdherentLinkDialogComponent } from "./components/admin/admin-adherent/admin-adherent-link-dialog/admin-adherent-link-dialog.component";
+import { MatSortModule } from "@angular/material/sort";
 
 registerLocaleData(localeFr);
 
@@ -47,9 +48,11 @@ registerLocaleData(localeFr);
         MatFormFieldModule,
         MatMenuModule,
         MatSelectModule,
+        MatSortModule,
         MatTableModule,
         MatTabsModule,
         PdfViewerModule,
+        FormsModule,
         ReactiveFormsModule,
         CommonModule
     ],
@@ -74,6 +77,7 @@ registerLocaleData(localeFr);
         MatFormFieldModule,
         MatMenuModule,
         MatSelectModule,
+        MatSortModule,
         MatTableModule,
         MatTabsModule,
         PdfViewerModule,

@@ -1,0 +1,15 @@
+<div class="item" *ngIf="!!clothe">
+    <div class="description">
+        <div class="ref"><b>REFERENCE</b> : {{clothe.ref}}</div>
+        <div class="targetPoeple">{{clothe.targetPoeple}}</div>
+        <div class="size"><span><b>TAILLE</b> : {{clothe.size}} </span><mat-icon aria-label="info" fontIcon="info" (click)="displaySizeInfo()"></mat-icon></div>
+        <div class="price"><b>PRIX</b> : {{clothe.price}} €</div>
+        <div class="composition"><b>MATIERE</b> : {{clothe.composition}}</div>
+        <div class="jacketDescription" *ngIf="!!clothe.jacketDescription"><b>VESTE</b> : <br/><span [innerText]="clothe.jacketDescription"></span></div>
+        <div class="pantDescription" *ngIf="!!clothe.pantDescription"><b>PANTALON</b> : <br/><span [innerText]="clothe.pantDescription"></span></div>
+        <div class="otherDescription" *ngIf="!!clothe.description"><b>DESCRIPTION</b> : <br/><span [innerText]="clothe.description"></span></div>
+    </div>
+    <div class="image">
+        <img [src]="imgURL"/>
+    </div>
+</div>

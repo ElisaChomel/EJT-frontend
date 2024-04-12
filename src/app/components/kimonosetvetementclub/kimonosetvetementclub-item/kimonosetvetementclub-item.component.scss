@@ -1,0 +1,72 @@
+@import "./../../../../styles.scss";
+
+.item{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+
+    .description{
+        display: flex;
+        flex-direction: column;
+        width: calc(50% - 10px);
+        margin-right: 10px;
+
+        .ref{
+            background-color: #b6bae0;
+            border: 2px solid $primary-color;
+            padding: 10px;
+            width: 100%;
+        }
+        
+        .price, .targetPoeple, .composition, .size, .jacketDescription, .pantDescription, .otherDescription{
+            border: 2px solid black;
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .size{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            cursor: pointer;
+
+            .mat-icon{
+                color: $primary-color;
+            }
+        }
+    }
+
+    .image{
+        background-color: white;
+        width: calc(50% - 10px);
+        margin-left: 10px;
+        height: auto;
+        display: flex;     
+        justify-content: center;
+        align-items: center;   
+
+        img{
+            max-height: 500px;
+        }
+    }
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .item{
+        flex-direction: column !important;
+
+        .description{
+            width: 100%;
+        }
+
+        .image{
+            width: 100%;
+            margin: 0px!important;
+        }
+    }
+}

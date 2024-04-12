@@ -29,8 +29,8 @@ export class LoginComponent {
     });
 
     this.form = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required]
+        username: ['admin@gmail.com', Validators.required],
+        password: ['password', Validators.required]
     }); 
   }
   

@@ -1,0 +1,22 @@
+<h1>Kimono et vêtements du club ...</h1>
+
+<div class="kimono-container">
+    <p>Vous pouvez commander des kimonos ou vêtements du club. L'association fera une commande grouper 1 ou 2 fois par ans.</p>
+    <p>Les vêtements auront le logo du club.</p>
+    <br/>
+    <p>Prochaine commande par le club le <b>{{date | date:"dd/MM/yyyy"}}</b></p>
+    <br>
+
+    <button *ngIf="dateForCheck > now" mat-raised-button color="primary" routerLink="order">Commander</button>
+    <br/>
+
+    <div class="clothes">    
+        <app-kimonosetvetementclub-item ref="SHIRO"></app-kimonosetvetementclub-item>
+        <app-kimonosetvetementclub-item ref="KODOMO"></app-kimonosetvetementclub-item>
+        <app-kimonosetvetementclub-item ref="HAYATO JUNIOR"></app-kimonosetvetementclub-item>
+        <app-kimonosetvetementclub-item ref="HAYATO ADULTE"></app-kimonosetvetementclub-item>
+        <app-kimonosetvetementclub-item ref="KEIKO 2 JUNIOR"></app-kimonosetvetementclub-item>
+        <app-kimonosetvetementclub-item ref="KEIKO 2 ADULTE"></app-kimonosetvetementclub-item>   
+        <app-kimonosetvetementclub-item ref="MIZUNO TERRY HOODIE JUNIOR"></app-kimonosetvetementclub-item>        
+    </div>
+</div>

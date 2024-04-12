@@ -1,0 +1,25 @@
+<div class="item" *ngIf="!!clothe">
+    <div class="image">
+        <img [src]="imgURL"/>
+    </div>
+    <div class="info">
+        <b>{{clothe.ref}}</b>
+        <p>{{clothe.price}} €</p>
+    </div>
+    <form class="order-item-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="field-size">
+            <mat-label>Taille</mat-label>
+            <mat-select formControlName="size">
+                <mat-option *ngFor="let i of sizes" [value]="i">{{i}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="field-quantity">
+            <mat-label>Quantité</mat-label>
+            <mat-select formControlName="quantity">
+                <mat-option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button [disabled]="form.invalid" mat-raised-button color="primary">Ajouter</button>
+    </form>
+    
+</div>

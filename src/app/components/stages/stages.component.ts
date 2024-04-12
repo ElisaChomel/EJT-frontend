@@ -141,7 +141,6 @@ export class StagesComponent {
     this.stageSelected = this.stages.find(x => x.id == event.value);
     this.adherentsStagesSubscription = this.stageService.getAdherentsInscription(event.value).subscribe(x => {
       this.adherentsStageInscription = x;
-      console.log(this.adherentsStageInscription);
       this.cdr.detectChanges();
     });
   }

@@ -6,7 +6,7 @@
   <h1>EJT<span class="toolbar-full-name"> - Judo de Montagny</span></h1>
   <div class="spacer"></div>
   <p class="username toolbar-info" *ngIf="userService.userSubject.value !== null">Bienvenue {{userService.userSubject.value.username}}</p>
-  <a class="toolbar-reseaux-sociaux" aria-label="Youtube" href="#" title="Youtube">
+  <!-- <a class="toolbar-reseaux-sociaux" aria-label="Youtube" href="#" title="Youtube">
     <img alt="Youtube" src="../assets/youtube-icon.png"/>
   </a>
   <a class="toolbar-reseaux-sociaux" aria-label="Facebook" href="#" title="Facebook">
@@ -14,7 +14,7 @@
   </a>
   <a class="toolbar-reseaux-sociaux" aria-label="Instagram" href="#" title="Instagram">
     <img alt="Instagram" src="../assets/instagram-icon.png"/>
-  </a>
+  </a> -->
   <a class="toolbar-reseaux-sociaux" aria-label="France Judo" target="#" href="https://www.ffjudo.com/" title="France Judo">
     <img alt="France Judo" src="../assets/france-judo-icon.png"/>
   </a>
@@ -57,6 +57,18 @@
     <mat-icon aria-label="Documents" fontIcon="description"></mat-icon>
     Documents
   </button>   
+  <button mat-menu-item routerLink="/tarif">
+    <mat-icon aria-label="Tarif" fontIcon="payments"></mat-icon>
+    Tarif
+  </button>     
+  <button mat-menu-item routerLink="/kimono">
+    <mat-icon aria-label="Kimono et vêtements du club" fontIcon="apparel" class="material-symbols-outlined"></mat-icon>
+    kimono et vêtements du club
+  </button>       
+  <button class="menu-small" mat-menu-item routerLink="/kimono/listorder" *ngIf="userService.isAdmin()">
+    <mat-icon aria-label="Commande" fontIcon="shopping_cart"></mat-icon>
+    Commande
+  </button> 
   <button mat-menu-item routerLink="/stages" *ngIf="userService.userSubject.value !== null">
     <mat-icon aria-label="Stages" fontIcon="school"></mat-icon>
     Stages
@@ -86,6 +98,10 @@
   <button mat-menu-item routerLink="/jigorokano">
     <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
     Jigoro Kano
+  </button> 
+  <button mat-menu-item routerLink="/hakumichigami">
+    <mat-icon aria-label="HakuMichigami" fontIcon="person"></mat-icon>
+    Haku Michigami
   </button> 
 </mat-menu>
 

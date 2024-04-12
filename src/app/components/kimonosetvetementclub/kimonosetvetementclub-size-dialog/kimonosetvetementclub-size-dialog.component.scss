@@ -1,0 +1,84 @@
+@import "./../../../../styles.scss";
+
+.mat-mdc-dialog-content{
+    display: flex;
+    flex-direction: column;
+    //overflow: hidden;
+    width: 100%;
+
+    h2{
+        font-size: 18px;
+        margin-top: 10px;
+        color: $primary-color;
+    }
+    p{
+        margin-bottom: 10px;
+        text-align: justify;
+    }
+
+    .images{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        img{
+            max-width: 30%;
+            object-fit: contain;
+            margin: 5px;
+        }
+    }
+
+    .table{
+        display: flex;
+        flex-direction: row;
+        .letter{
+            div{
+                background-color: $background-color;
+                border: 1px solid $primary-color;
+                width: 50px;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .size-title{
+                width: 230px;
+            }
+        }
+        .clothe-name{
+            margin-left: -180px;
+            div{
+                background-color: $background-color;
+                border: 1px solid $primary-color;
+                width: 180px;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .size-title{
+                width: 0px;
+                height: 35px;
+                padding: 0px;
+                border: none;
+            }
+        }
+        .size{
+            width: calc(100% - 230px);
+            overflow-x: auto;
+            display: flex;
+            flex-direction: row;
+            .size-item{
+                div{
+                    border: 1px solid $primary-color;
+                    width: 50px;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
