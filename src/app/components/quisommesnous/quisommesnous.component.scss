@@ -8,6 +8,10 @@
     flex-direction: column;
     width: calc(100%);
 
+    h2{
+        margin-top: 40px;
+    }
+
     .general, .membres, .profs, .valeurs{
         display: flex;
         flex-direction: row;
@@ -17,7 +21,7 @@
         border-radius: 10px;
     }
 
-    .president{
+    .president, .fondateur, .bureau{
         display: flex;
         flex-direction: column;
         width: calc(100% - 40px);
@@ -62,6 +66,14 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+
+        .general-text-important{
+            font-style: italic;
+            font-size: 20px;
+            text-align: center;
+            color: $primary-color;
+            font-weight: bold;
+        }
     }
 }
 
@@ -77,7 +89,7 @@
         }
     }
 
-    .president{
+    .president, .fondateur, .bureau{
         width: 100%!important;
     }
 
