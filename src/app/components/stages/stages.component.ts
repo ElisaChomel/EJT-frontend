@@ -2,10 +2,12 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { IEjtAdherent, IEjtAdherentInscription } from 'src/app/models/ejt-adherent';
 import { IStage } from 'src/app/models/stage';
 import { LoaderService } from 'src/app/services/loader.service';
 import { StageService } from 'src/app/services/stage.service';
+import { StatsService } from 'src/app/services/stats.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -34,9 +36,11 @@ export class StagesComponent {
     private loaderService: LoaderService, 
     private formBuilder: FormBuilder,
     private toastr: ToastrService,   
-    private cdr: ChangeDetectorRef) {}
+    private cdr: ChangeDetectorRef,
+    private statService: StatsService) {}
 
   ngOnInit () {
+    this.statService.add(StatName.stage).subscribe();
     this.loaderService.show();
 
     this.form = this.formBuilder.group({

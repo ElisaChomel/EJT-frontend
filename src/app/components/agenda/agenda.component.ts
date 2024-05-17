@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { IAgenda } from 'src/app/models/agenda';
 import { AgendaService } from 'src/app/services/agenda.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-agenda',
@@ -16,10 +18,12 @@ export class AgendaComponent {
   
   constructor( 
     public agendaService: AgendaService,
-    private loaderService: LoaderService) {}
+    private loaderService: LoaderService,
+    private statService: StatsService) {}
 
     
   ngOnInit () {
+    this.statService.add(StatName.agenda).subscribe();
     this.loaderService.show();
     this.agendaSubscription = this.agendaService.getAll()
       .subscribe(x => {

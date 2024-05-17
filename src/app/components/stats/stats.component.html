@@ -1,0 +1,23 @@
+<h1>Stats ...</h1>
+
+<div class="stats-container">
+    <div class="chart-container">
+        <canvas class="canvas" baseChart
+            [type]="'pie'"
+            [datasets]="pieChartDatasets"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+        </canvas>
+    </div>
+    <div class="chart-container">
+        <canvas class="canvas" baseChart
+            [type]="'bar'"
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend">
+        </canvas>
+    </div>
+</div>

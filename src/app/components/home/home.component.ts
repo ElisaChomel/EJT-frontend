@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { LoaderService } from 'src/app/services/loader.service';
 import { PhotosService } from 'src/app/services/photos.service';
+import { StatsService } from 'src/app/services/stats.service';
 
 export interface IImageObject {
   name:string;
@@ -15,7 +17,6 @@ export interface IImageObject {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
   public photosSubscription: Subscription = new Subscription;
   public photoSubscription: Subscription = new Subscription;
 
@@ -24,10 +25,12 @@ export class HomeComponent {
 
   constructor(
     private photoService: PhotosService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private statService: StatsService
   ){}
 
   ngOnInit () {
+    this.statService.add(StatName.home).subscribe();
     this.loaderService.show();
     this.photosSubscription = this.photoService.getPhotosNames('home')
       .subscribe(fn => {

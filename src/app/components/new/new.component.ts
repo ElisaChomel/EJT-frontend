@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { INew } from 'src/app/models/new';
 import { LoaderService } from 'src/app/services/loader.service';
 import { NewsService } from 'src/app/services/news.service';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-new',
@@ -16,10 +18,12 @@ export class NewComponent {
   
   constructor( 
     public newsService: NewsService,
-    private loaderService: LoaderService) {}
+    private loaderService: LoaderService,
+    private statService: StatsService) {}
 
     
   ngOnInit () {
+    this.statService.add(StatName.new).subscribe();
     this.loaderService.show();
     this.newsSubscription = this.newsService.getAll()
       .subscribe(x => {

@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'competitions', loadChildren: () => import('./components/competitions/competitions.module').then((m) => m.ComeptitionsModule)},
   { path: 'stages', loadChildren: () => import('./components/stages/stages.module').then((m) => m.StagesModule)},
   { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule)},
+  { path: 'stats', loadChildren: () => import('./components/stats/stats.module').then((m) => m.StatsModule)},
 ];
 
 @NgModule({

@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { ICompetition } from 'src/app/models/competition';
 import { ICompetitionResult } from 'src/app/models/competition-result';
 import { CompetitionService } from 'src/app/services/competition.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-competitions',
@@ -25,9 +27,11 @@ export class CompetitionsComponent {
   constructor(
     public competitionService: CompetitionService,
     private loaderService: LoaderService,    
-    private cdr: ChangeDetectorRef) {}
+    private cdr: ChangeDetectorRef,
+    private statService: StatsService) {}
 
   ngOnInit () {
+    this.statService.add(StatName.competition).subscribe();
     this.loaderService.show();
     this.competitionSubscription = this.competitionService.getAll()
       .subscribe(x => {

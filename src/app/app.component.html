@@ -28,6 +28,8 @@
     <img alt="Profile" src="../assets/logout-icon.png"/>
   </a>
 </div>
+
+<!-- Menu  de la toolbar-->
 <mat-menu #menu="matMenu">
   <button class="menu-full" mat-menu-item routerLink="">
     <mat-icon aria-label="Accueil" fontIcon="home"></mat-icon>
@@ -80,9 +82,14 @@
   <button class="menu-small" mat-menu-item routerLink="/admin" *ngIf="userService.isAdmin()">
     <mat-icon aria-label="Admin" fontIcon="settings"></mat-icon>
     Administration
-  </button>
+  </button>        
+  <button class="menu-small" mat-menu-item routerLink="/stats" *ngIf="userService.isAdmin()">
+    <mat-icon aria-label="Stats" fontIcon="stacked_bar_chart"></mat-icon>
+    Stats
+  </button> 
 </mat-menu>
 
+<!-- Menu Competition de la toolbar-->
 <mat-menu #menuCompetition="matMenu">
   <button mat-menu-item routerLink="/competitions/inscription">
     <mat-icon aria-label="Compétitions" fontIcon="edit"></mat-icon>
@@ -94,6 +101,7 @@
   </button> 
 </mat-menu>
 
+<!-- Menu Maitre de la toolbar-->
 <mat-menu #menuMaitres="matMenu">
   <button mat-menu-item routerLink="/jigorokano">
     <mat-icon aria-label="JigoroKano" fontIcon="person"></mat-icon>
@@ -105,7 +113,7 @@
   </button> 
 </mat-menu>
 
-<!-- Menu -->
+<!-- Menu  vertical-->
 <div class="menu">
   <a routerLink="">
     <mat-icon aria-label="Accueil" fontIcon="home"></mat-icon>

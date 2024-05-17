@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StatName } from 'src/app/enums/stat-name';
 import { DocumentsService } from 'src/app/services/documents.service';
+import { StatsService } from 'src/app/services/stats.service';
 
 
 @Component({
@@ -27,10 +29,14 @@ export class DocumentComponent {
   public dossierReglementInterieurSubscription: Subscription = new Subscription;
   public dossierPlanningCoursSubscription: Subscription = new Subscription;
 
-  constructor(private documentService: DocumentsService){  
+  constructor(
+    private documentService: DocumentsService,
+    private statService: StatsService){  
   }
 
   ngOnInit () {
+    this.statService.add(StatName.document).subscribe();
+    
     this.livretAccueilSubscription = this.documentService.getDocument(this.nameLivretAccueil)
       .subscribe(x => {
         this.urlLivretAccueil = URL.createObjectURL(x);
