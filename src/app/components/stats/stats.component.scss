@@ -16,3 +16,17 @@
         }
     }
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .stats-container{
+        display: flex;
+        flex-direction: column;
+    
+        .chart-container{
+            width: 100%;
+            align-content: center;
+            text-align: center;
+        }
+    }
+}

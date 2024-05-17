@@ -83,7 +83,7 @@
     <mat-icon aria-label="Admin" fontIcon="settings"></mat-icon>
     Administration
   </button>        
-  <button class="menu-small" mat-menu-item routerLink="/stats" *ngIf="userService.isAdmin()">
+  <button mat-menu-item routerLink="/stats" *ngIf="userService.isAdmin()">
     <mat-icon aria-label="Stats" fontIcon="stacked_bar_chart"></mat-icon>
     Stats
   </button> 
