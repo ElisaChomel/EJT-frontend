@@ -50,6 +50,7 @@ export class AdminAdherentComponent {
         adherent: !!a ? a : {id: null, lastname: null, firstname: null, birthday: null, licenceCode: null, weight: null, belt: null},
         type
       },
+      width: '500px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

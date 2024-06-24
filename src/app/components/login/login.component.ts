@@ -52,8 +52,12 @@ export class LoginComponent {
     this.authenticateSubscription = this.userService.authenticate(authenticate)
       .subscribe({
         next: (u) => {
-          this.displayError = false;
-          this.router.navigateByUrl(this.returnUrl);
+          if(!!u){
+            this.displayError = false;
+            this.router.navigateByUrl(this.returnUrl);
+          } else {
+            this.displayError = true;
+          }
         },
         error: () =>{          
           this.displayError = true;
