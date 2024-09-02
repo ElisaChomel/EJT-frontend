@@ -6,6 +6,7 @@ export enum StatName {
     new = 'new',
     agenda = 'agenda',
     document = 'document',
+    horaire = 'horaire',
     tarif = 'tarif',
     kimono = 'kimono',
     stage = 'stage',

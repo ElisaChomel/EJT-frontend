@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'new', loadChildren: () => import('./components/new/new.module').then((m) => m.NewModule)},
   { path: 'agenda', loadChildren: () => import('./components/agenda/agenda.module').then((m) => m.AgendaModule)},
   { path: 'document', loadChildren: () => import('./components/document/document.module').then((m) => m.DocumentModule)},
+  { path: 'horaire', loadChildren: () => import('./components/horaire/horaire.module').then((m) => m.HoraireModule)},
   { path: 'tarif', loadChildren: () => import('./components/tarif/tarif.module').then((m) => m.TarifModule)},
   { path: 'kimono', loadChildren: () => import('./components/kimonosetvetementclub/kimonosetvetementclub.module').then((m) => m.KimonosetvetementclubModule)},
   { path: 'competitions', loadChildren: () => import('./components/competitions/competitions.module').then((m) => m.ComeptitionsModule)},
