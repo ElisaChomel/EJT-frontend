@@ -21,10 +21,11 @@ export class AppComponent {
     { href: null, img:'../assets/sponsors/sponsors-4.png' },
     { href: 'http://www.garage-flachy.com', img:'../assets/sponsors/sponsors-5.png' },
     { href: 'http://crozatelectricite.com', img:'../assets/sponsors/sponsors-6.png' },
-    { href: null, img:'../assets/sponsors/sponsors-7.png' },
-    { href: null, img:'../assets/sponsors/sponsors-8.png' },
-    { href: null, img:'../assets/sponsors/sponsors-9.png' },
+    { href: 'https://www.laforet.com', img:'../assets/sponsors/sponsors-7.png' },
+    { href: 'https://optiquedujayon-grigny.monopticien.com', img:'../assets/sponsors/sponsors-8.png' },
+    { href: 'https://www.creatrice-robe-de-mariee-lyon.fr', img:'../assets/sponsors/sponsors-9.png' },
     { href: 'https://manoirsakana.com', img:'../assets/sponsors/sponsors-10.png' },
+    { href: null, img:'../assets/sponsors/sponsors-11.png' },
   ];
 
   public sponsorsSubscription: Subscription;
