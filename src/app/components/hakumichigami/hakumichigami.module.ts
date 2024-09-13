@@ -1,6 +1,9 @@
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
+
 import { HakumichigamiRoutingModule } from "./hakumichigami-routing.module";
 import { HakumichigamiComponent } from "./hakumichigami.component";
+
 
 @NgModule({
     declarations: [
@@ -8,6 +11,7 @@ import { HakumichigamiComponent } from "./hakumichigami.component";
     ],
     imports: [
         HakumichigamiRoutingModule,
+        HttpClientModule    
     ],
     exports:[
         HakumichigamiComponent

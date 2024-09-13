@@ -1,3 +1,5 @@
+@import "./../../../styles.scss";
+
 .hm-container{
     display: flex;
     height: calc(100% - 100px);
@@ -13,6 +15,33 @@
 
         p{
             text-align: justify;
+        }
+
+        .hm-text-citation{
+            font-size: 20px!important;
+        }
+
+        .hm-text-image{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            img {
+                display: block;
+                width: 150px;
+                height: auto;
+            }
+        }
+
+        .hm-text-video{
+            ::ng-deep .embed-youtube-one-clip {
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                border: 2px solid $primary-color;
+                width: 100%;
+                max-width: 680px;
+                margin: auto; /* Center the entire container horizontally */
+            }
         }
     }
     .hm-image{
@@ -44,6 +73,22 @@
         .hm-text {  
             width: 100%;
             padding-right: 0px;
+
+            .hm-text-citation{
+                font-size: 20px!important;
+            }
+
+            .hm-text-image{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img{
+                    padding-bottom: 10px;
+                    display: block;
+                    width: 150px;
+                    height: auto;
+                }
+            }
         }
     }
 }
