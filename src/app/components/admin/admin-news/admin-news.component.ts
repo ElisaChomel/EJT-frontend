@@ -39,19 +39,14 @@ export class AdminNewsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(!!result){        
+      if(!!result){    
         this.insertAndDeleteFile(result);
       }
     });
   }
 
   ngOnInit () {
-    this.loaderService.show();
-    this.newsSubscription = this.newsService.getAll()
-      .subscribe(x => {
-        this.list = x;
-        this.loaderService.hide();
-      });   
+    this.getNews();
   } 
   
   ngOnDestroy() {
@@ -60,7 +55,17 @@ export class AdminNewsComponent {
     this.photoDeleteSubscription.unsubscribe(); 
   }
 
+  getNews(): void{
+    this.loaderService.show();
+    this.newsSubscription = this.newsService.getAll()
+      .subscribe(x => {
+        this.list = x;
+        this.loaderService.hide();
+      });
+  }
+
   public insertAndDeleteFile(data: DialogData): void{
+    // Ajout des images
     data.filesToUpload.forEach(f => {
       const filename = (f.get('file') as File).name;
       const index = data.filesToDelete.findIndex(x => x === filename);
@@ -68,7 +73,6 @@ export class AdminNewsComponent {
       if(index === -1){
         this.photoUploadSubscription = this.photoService.upload(`new${data.new.id}`, f).subscribe({
           next: (x) => {
-            this.list.push(data.new);
           }, 
           error: (err) => {
             console.log("Failed to upload file");
@@ -81,9 +85,12 @@ export class AdminNewsComponent {
 
     });
 
+    // Suppression des images  
     data.filesToDelete.forEach(f => {
       this.photoDeleteSubscription = this.photoService.delete(`new${data.new.id}`, f).subscribe();
     });
 
+    // Rafraichissement
+    this.getNews();
   }
 }

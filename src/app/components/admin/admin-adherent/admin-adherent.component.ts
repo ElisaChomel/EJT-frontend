@@ -31,18 +31,22 @@ export class AdminAdherentComponent {
     private cdr: ChangeDetectorRef) {}
 
   ngOnInit () {
+    this.getEjts();
+  } 
+  
+  ngOnDestroy() {
+    this.ejtSubscription.unsubscribe();    
+  }
+  
+  getEjts(): void{
     this.loaderService.show();
     this.ejtSubscription = this.ejtService.getAllAdherent()
       .subscribe(x => {
         this.dataSource = x;
         this.loaderService.hide();
         this.cdr.detectChanges();
-      });   
-  } 
-  
-  ngOnDestroy() {
-    this.ejtSubscription.unsubscribe();    
-  } 
+      });  
+  }
   
   openDialogAdherent(a: IEjtAdherent | null, type: ActionType) {
     let dialogRef = this.dialog.open(AdminAdherentDialogComponent, {
@@ -55,16 +59,7 @@ export class AdminAdherentComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(!!result){        
-        const list = [...this.dataSource];
-
-        if(type === ActionType.Add){
-          list.push(result);
-        } else {
-          list[list.findIndex(x => x.id === result.id)] = result;
-        }
-
-        this.dataSource = [...list];
-        this.cdr.detectChanges();
+        this.getEjts();
       }
     });
   }

@@ -29,6 +29,11 @@ export class AgendaCardComponent {
     this.detailList = this.a.detail.split('\n');
   }
 
+  isNow(): boolean{
+    var now = new Date();
+    return this.a.id === -1 || new Date(this.a.date).getFullYear() === now.getFullYear() && new Date(this.a.date).getMonth() === now.getMonth() && new Date(this.a.date).getDate() === now.getDate();
+  }
+
   openEditDialog(a: IAgenda, type: ActionType) {
     let dialogRef = this.dialog.open(AdminAgendaDialogComponent, {
       data: {

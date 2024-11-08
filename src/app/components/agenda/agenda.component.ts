@@ -27,12 +27,22 @@ export class AgendaComponent {
     this.loaderService.show();
     this.agendaSubscription = this.agendaService.getAll()
       .subscribe(x => {
-        this.list = x;
+        if(!x.find(i => this.isNow(i))) {
+          x.push({id: -1, date: new Date(), title: 'Pas d\'évenement aujourd\'hui', resume: '', detail: '', address: ''});
+        }
+
+
+        this.list = x.sort((a, b) => {return new Date(b.date).getTime() - new Date(a.date).getTime();});
         this.loaderService.hide();
       });   
   } 
   
   ngOnDestroy() {
     this.agendaSubscription.unsubscribe();    
+  }
+
+  isNow(a: IAgenda): boolean{
+    var now = new Date();
+    return new Date(a.date).getFullYear() === now.getFullYear() && new Date(a.date).getMonth() === now.getMonth() && new Date(a.date).getDate() === now.getDate();
   }
 }

@@ -26,16 +26,20 @@ export class AdminAgendaComponent {
     public agendaService: AgendaService) {}
 
   ngOnInit () {
+      this.getAgendas();
+  } 
+  
+  ngOnDestroy() {
+    this.agendaSubscription.unsubscribe();    
+  }
+
+  getAgendas(): void {
     this.loaderService.show();
     this.agendaSubscription = this.agendaService.getAll()
       .subscribe(x => {
         this.list = x;
         this.loaderService.hide();
-      });   
-  } 
-  
-  ngOnDestroy() {
-    this.agendaSubscription.unsubscribe();    
+      }); 
   }
   
   openDialog() {
@@ -48,7 +52,7 @@ export class AdminAgendaComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(!!result){        
-        this.list.push(result);
+        this.getAgendas();
       }
     });
   }

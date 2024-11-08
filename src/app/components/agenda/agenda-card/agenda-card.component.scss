@@ -17,6 +17,11 @@
         display: flex;
     }
 
+    .date.now{
+        background-color: $second-color;
+        color: $primary-text-dark-color;
+    }
+
     .infos{
         padding: 10px;
         width: 300px;
@@ -39,6 +44,13 @@
             .mat-icon:hover{
                 color: $primary-lighter-color;
             }
+        }
+    }
+
+    .infos.now.noevent {
+        width: 100%;
+        .title {
+            font-size: 35px;
         }
     }
 

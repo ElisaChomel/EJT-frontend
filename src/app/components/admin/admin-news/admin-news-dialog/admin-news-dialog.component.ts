@@ -86,6 +86,7 @@ export class AdminNewsDialogComponent {
       this.newUploadSubscription = this.newsService.upload(this.data.new).subscribe({
         next: (x) => {
           this.toastr.success('Succès de la création du nouvelle enregistrement pour les news');
+          this.data.new.id = x.id;
           this.dialogRef.close(this.data);
         },
         error: () => {

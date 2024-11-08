@@ -92,7 +92,6 @@ export class KimonosetvetementclubListOrderComponent {
       next: (x) => {       
         let list = this.dataSource.slice();
         list.forEach(item => {
-          console.log()
           if(item.id === id){
             item.isPay = true;
           }
