@@ -28,7 +28,7 @@ export class AgendaComponent {
     this.agendaSubscription = this.agendaService.getAll()
       .subscribe(x => {
         if(!x.find(i => this.isNow(i))) {
-          x.push({id: -1, date: new Date(), title: 'Pas d\'évenement aujourd\'hui', resume: '', detail: '', address: ''});
+          x.push({id: -1, date: new Date(), title: 'Pas d\'événement aujourd\'hui', resume: '', detail: '', address: ''});
         }
 
 
