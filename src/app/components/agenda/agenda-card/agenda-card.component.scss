@@ -67,6 +67,11 @@
     }
 }
 
+.agenda-card-container:hover{
+    background-color: $second-lighter-color;
+    filter: drop-shadow(5px 5px 10px black);
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
     .agenda-card-container{
